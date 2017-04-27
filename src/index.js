@@ -19,9 +19,10 @@ var client = new pg.Client({
  client.connect();
 
  var query = client.query('select * from company;');
- var x;
+ var x=[];
  query.on('row', function(row) {
-   x = row.name
+   x.push(row.name);
+   console.log(x);
    client.end();
  });
 
@@ -133,7 +134,7 @@ function sendTextMessage(recipientId, messageText) {
        },
        {
          "content_type":"text",
-         "title": x ,
+         "title": x[1] ,
          "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN",
          "image_url":"http://petersfantastichats.com/img/green.png"
        }
