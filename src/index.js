@@ -223,7 +223,8 @@ function callSendAPI(messageData) {
  var data = {
    "setting_type":"greeting",
    "greeting":{
-     "text":"Hi {{user_first_name}}, welcome to Van bot.🚎🚎"
+     "text":"Hi {{user_first_name}}, welcome to Van bot.🚎🚎",
+     "payload":"getStarted"
    }
  };
  callThreadSettingsAPI(data);
