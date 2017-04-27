@@ -205,7 +205,7 @@ function callSendAPI(messageData) {
 
  function callThreadSettingsAPI(data) { //Thread Reference API
  request({
- uri: 'https://graph.facebook.com/v2.6/me/thread_settings',
+ uri: 'https://graph.facebook.com/v2.6/me/messenger_profile',
  qs: { access_token: access },
  method: 'POST',
  json: data
@@ -221,12 +221,9 @@ function callSendAPI(messageData) {
 
  function createGetStarted() {
  var data = {
-   "setting_type":"greeting",
-   "greeting":{
-     "text":"Hi {{user_first_name}}, welcome to Van bot.🚎🚎",
-     "payload":"GET_STARTED_PAYLOAD"
-    //  "payload":"getStarted"
-   }
+   "fields":[
+    "get_started"
+  ]
  };
  callThreadSettingsAPI(data);
  }
