@@ -7,23 +7,23 @@ const pg = require("pg");
 const token = process.env.FB_VARIFY_TOKEN
 const access = process.env.FB_ACCESS_TOKEN
 
-// var client = new pg.Client({
-//   user: "wvlwhwidwfqdmd",
-//   password: "56d5dd8fbd584752d66eb7928c66baa555091e372f13c855cecc67d51bff5ad1",
-//   database: "da4u7s2l8djveh",
-//   port: 5432,
-//   host: "ec2-54-243-107-66.compute-1.amazonaws.com",
-//   ssl: true
-// });
-//
-// client.connect();
-//
-// var query = client.query('select * from queue;');
-// var x;
-// query.on('row', function(row) {
-//   x = row.name
-//   client.end();
-// });
+var client = new pg.Client({
+   user: "hzztwngdfycnhv",
+   password: "569b7e11c1c01f2adc179f6cfc04cce92a666737bcd336e5960a103b2131dcb6",
+   database: "d4ipqftcr4a1kn",
+   port: 5432,
+   host: "ec2-54-204-0-88.compute-1.amazonaws.com",
+   ssl: true
+ });
+
+ client.connect();
+
+ var query = client.query('select * from queue;');
+ var x;
+ query.on('row', function(row) {
+   x = row.name
+   client.end();
+ });
 
 app.set('port',(process.env.PORT || 5000))
 
