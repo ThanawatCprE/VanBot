@@ -206,7 +206,7 @@ function callSendAPI(messageData) {
  request({
  uri: 'https://graph.facebook.com/v2.6/me/thread_settings',
  qs: { access_token: access },
- method: 'DELETE',
+ method: 'POST',
  json: data
 
  }, function (error, response, body) {
@@ -220,7 +220,10 @@ function callSendAPI(messageData) {
 
  function createGetStarted() {
  var data = {
-   "setting_type":"greeting"
+   "setting_type":"greeting",
+   "greeting":{
+     "text":"Hi {{user_first_name}}, welcome to Van bot.🚎🚎"
+   }
  };
  callThreadSettingsAPI(data);
  }
