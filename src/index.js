@@ -2,7 +2,7 @@ const express =require('express');
 const bodyPaser = require('body-parser');
 const request = require('request');
 const app =express();
-// const pg = require("pg");
+const pg = require("pg");
 
 const token = process.env.FB_VARIFY_TOKEN
 const access = process.env.FB_ACCESS_TOKEN
@@ -15,7 +15,7 @@ const access = process.env.FB_ACCESS_TOKEN
 //   host: "ec2-54-243-107-66.compute-1.amazonaws.com",
 //   ssl: true
 // });
-
+//
 // client.connect();
 //
 // var query = client.query('select * from queue;');
@@ -133,7 +133,7 @@ function sendTextMessage(recipientId, messageText) {
        },
        {
          "content_type":"text",
-         "title": "test" ,
+         "title": x ,
          "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN",
          "image_url":"http://petersfantastichats.com/img/green.png"
        }
@@ -201,27 +201,6 @@ function callSendAPI(messageData) {
     }
   });
 }
-function callSendAP(messageData) {
-  request({
-    uri: 'https://graph.facebook.com/v2.6/me/messenger_profile',
-    qs: { access_token: access },
-    method: 'POST',
-    json: messageData
-
-  }, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      var recipientId = body.recipient_id;
-      var messageId = body.message_id;
-
-      console.log("Successfully sent generic message with id %s to recipient %s",
-        messageId, recipientId);
-    } else {
-      console.error("Unable to send message.");
-      console.error(response);
-      console.error(error);
-    }
-  });
-}
 
 // function callThreadSettingsAPI(data) { //Thread Reference API
 // request({
@@ -241,32 +220,10 @@ function callSendAP(messageData) {
 //
 // function createGetStarted() {
 // var data = {
-// 	"setting_type" : "call_to_actions",
-//   "thread_state" : "existing_thread",
-//   "call_to_actions":[
-//     {
-//       "type":"postback",
-//       "title":"Help",
-//       "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_HELP"
-//     },
-//     {
-//       "type":"postback",
-//       "title":"Start a New Order",
-//       "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_START_ORDER"
-//     },
-//     {
-//       "type":"web_url",
-//       "title":"Checkout",
-//       "url":"https://petersapparel.parseapp.com/checkout",
-//       "webview_height_ratio": "full",
-//       "messenger_extensions": true
-//     },
-//     {
-//       "type":"web_url",
-//       "title":"View Website",
-//       "url":"https://petersapparel.parseapp.com/"
-//     }
-//   ]
+//   "setting_type":"greeting",
+//   "greeting":{
+//     "text":"Hi {{user_first_name}}, welcome to this bot."
+//   }
 // };
 // callThreadSettingsAPI(data);
 // }
