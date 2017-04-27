@@ -134,7 +134,7 @@ function sendTextMessage(recipientId, messageText) {
        },
        {
          "content_type":"text",
-         "title": x[0] ,
+         "title": x[2] ,
          "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN",
          "image_url":"http://petersfantastichats.com/img/green.png"
        }
