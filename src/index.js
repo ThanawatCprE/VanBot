@@ -18,7 +18,7 @@ var client = new pg.Client({
 
  client.connect();
 
- var query = client.query('select * from queue;');
+ var query = client.query('select * from company;');
  var x;
  query.on('row', function(row) {
    x = row.name
