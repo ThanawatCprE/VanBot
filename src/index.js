@@ -5,7 +5,7 @@ const app =express();
 // const pg = require("pg");
 
 const token = process.env.FB_VARIFY_TOKEN
-const access = process.env.FB_ACCEESS_TOKEN
+const access = process.env.FB_ACCESS_TOKEN
 
 // var client = new pg.Client({
 //   user: "wvlwhwidwfqdmd",
