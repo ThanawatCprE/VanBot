@@ -135,51 +135,8 @@ function sendTextMessage(recipientId, messageText) {
        {
          "content_type":"text",
          "title":"กรุงเทพไปชลบุรี",
-         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED",
-         "image_url":"https://www.w3schools.com/css/trolltunga.jpg"
-       },
-       {
-         "content_type":"text",
-         "title": x[1] ,
-         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN",
-         "image_url":"http://petersfantastichats.com/img/green.png"
-       }
-		 	,
-       {
-         "content_type":"text",
-         "title":"จันทบุรีไปอุดรธานี",
-         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN",
-         "image_url":"http://petersfantastichats.com/img/green.png"
-       }
-		 	,
-       {
-         "content_type":"text",
-         "title":"เชียงใหม่ไปนครนายก",
-         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN",
-         "image_url":"http://petersfantastichats.com/img/green.png"
-       }
-		 	,
-       {
-         "content_type":"text",
-         "title":"ปทุมธานีไปกรุงเทพ",
-         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN",
-         "image_url":"http://petersfantastichats.com/img/green.png"
-       }
-		 	,
-       {
-         "content_type":"text",
-         "title":"พัทลุงไปเชียงราย",
-         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN",
-         "image_url":"http://petersfantastichats.com/img/green.png"
-       }
-		 	,
-       {
-         "content_type":"text",
-         "title":"ชลบุรีไปแม่ฮ่องสอน",
-         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN",
-         "image_url":"http://petersfantastichats.com/img/green.png"
-       }
-   	]
+         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+       } ]
 
 		}
   };
