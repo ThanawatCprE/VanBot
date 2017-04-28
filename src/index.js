@@ -140,7 +140,7 @@ function sendTextMessage(recipientId, messageText) {
        },
        {
          "content_type":"text",
-         "title": "dsfsd" ,
+         "title": x ,
          "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN",
          "image_url":"http://petersfantastichats.com/img/green.png"
        }
