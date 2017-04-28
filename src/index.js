@@ -177,7 +177,7 @@ function sendQueueVan(recipientId, messageText) {
             "buttons":[
               {
                 "type":"postback",
-                "title":"ดูที่ตั้งบริษัท",
+                "title":"ดูรายละเอียดบริษัท",
                 "payload":"DEVELOPER_DEFINED_PAYLOAD"
               },{
                 "type":"phone_number",
