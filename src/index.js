@@ -202,32 +202,32 @@ function callSendAPI(messageData) {
     }
   });
 }
-
- function callThreadSettingsAPI(data) { //Thread Reference API
- request({
- uri: 'https://graph.facebook.com/v2.6/me/messenger_profile',
- qs: { access_token: access },
- method: 'POST',
- json: data
-
- }, function (error, response, body) {
- if (!error && response.statusCode == 400) {
-   console.log("Thread Settings successfully changed!");
- } else {
-   console.error("Failed calling Thread Reference API", response.statusCode, response.statusMessage, body.error);
- }
- });
- }
-
- function createGetStarted() {
- var data = {
-   "fields":[
-    "get_started"
-  ]
- };
- callThreadSettingsAPI(data);
- }
+ //
+ // function callThreadSettingsAPI(data) { //Thread Reference API
+ // request({
+ // uri: 'https://graph.facebook.com/v2.6/me/messenger_profile',
+ // qs: { access_token: access },
+ // method: 'POST',
+ // json: data
+ //
+ // }, function (error, response, body) {
+ // if (!error && response.statusCode == 400) {
+ //   console.log("Thread Settings successfully changed!");
+ // } else {
+ //   console.error("Failed calling Thread Reference API", response.statusCode, response.statusMessage, body.error);
+ // }
+ // });
+ // }
+ //
+ // function createGetStarted() {
+ // var data = {
+ //   "fields":[
+ //    "get_started"
+ //  ]
+ // };
+ // callThreadSettingsAPI(data);
+ // }
 app.listen(app.get('port'),function(){
-	 createGetStarted();
+	//  createGetStarted();
 	console.log('runing on port',app.get('port'))
 })
