@@ -177,8 +177,8 @@ function sendQueueVan(recipientId, messageText) {
             "buttons":[
               {
                 "type":"phone_number",
-                "title":"โทร",
-                "payload":"0856970832"
+                "title":"โทรออก",
+                "payload":"+0856970832"
               }
               ]
           },
