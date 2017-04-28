@@ -176,8 +176,12 @@ function sendQueueVan(recipientId, messageText) {
 			 			"image_url":"https://scontent.fbkk2-1.fna.fbcdn.net/v/t1.0-9/18058138_1689678951326816_1841996356629707121_n.png?oh=08a8d4dab68a902db65b0fe5d8e5e0d9&oe=59898F34",
             "buttons":[
               {
+                "type":"postback",
+                "title":"Veiw",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD"
+              },{
                 "type":"phone_number",
-                "title":"         โทรออก",
+                "title":"โทรออก",
                 "payload":"0856970832"
               }
               ]
