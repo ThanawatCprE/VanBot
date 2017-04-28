@@ -180,7 +180,7 @@ function sendQueueVan(recipientId, messageText) {
                           "messenger_extensions": true,
                           "webview_height_ratio": "tall",
                           "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
-            }
+            },
             "buttons":[
               {
                 "type":"web_url",
