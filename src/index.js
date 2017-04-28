@@ -97,12 +97,12 @@ function receivedMessage(event) {
     // If we receive a text message, check to see if it matches a keyword
     // and send back the example. Otherwise, just echo the text we received.
     switch (messageText) {
-      case 'generic':
-        sendGenericMessage(senderID);
+      case 'ช่วยด้วย':
+        sendTextMessage(senderID, messageText);
         break;
 
       default:
-        sendTextMessage(senderID, messageText);
+        // sendTextMessage(senderID, messageText);
     }
   } else if (messageAttachments) {
     sendTextMessage(senderID, "Message with attachment received");
@@ -134,10 +134,25 @@ function sendTextMessage(recipientId, messageText) {
      "quick_replies":[
        {
          "content_type":"text",
-         "title":"กรุงเทพไปชลบุรี",
+         "title":"กรุงเทพไปสระบุรี",
          "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-       } ]
-
+       },
+       {
+         "content_type":"text",
+         "title":"กรุงเทพไปลพบุรี",
+         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+       },
+       {
+         "content_type":"text",
+         "title":"กรุงเทพไปสิงห์บุรี",
+         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+       },
+       {
+         "content_type":"text",
+         "title":"กรุงเทพไปนครสวรรค์",
+         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+       }
+      ]
 		}
   };
 
