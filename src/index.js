@@ -121,40 +121,71 @@ function sendTextMessage(recipientId, messageText) {
       id: recipientId
     },
     message: {
-			 "attachment":{
-       "type":"template",
-	       "payload":{
-			 		"template_type":"generic",
-					"elements":[{
-						"title":"🚎สวัสดีครับVanbotพร้อมให้บริการ🚎 คุณต้องการจะเดินทางไปที่ไหน ❓❓",
-						"subtitle":"ตัวอย่างการใสข้อมูล ❗❗ < กรุงเทพไปชลบุรี > หรือ เลือกจากปุ่มด้านล่าง",
-			 			"image_url":"https://scontent.fbkk2-1.fna.fbcdn.net/v/t1.0-9/18058138_1689678951326816_1841996356629707121_n.png?oh=08a8d4dab68a902db65b0fe5d8e5e0d9&oe=59898F34"
-			 		}]
-	       }
-    	 },
-		// 	"text":"ตอนนี้อยู่ที่ไหน:",
-     "quick_replies":[
-       {
-         "content_type":"text",
-         "title":"กรุงเทพไปสระบุรี",
-         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-       },
-       {
-         "content_type":"text",
-         "title":"กรุงเทพไปลพบุรี",
-         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-       },
-       {
-         "content_type":"text",
-         "title":"กรุงเทพไปสิงห์บุรี",
-         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-       },
-       {
-         "content_type":"text",
-         "title":"กรุงเทพไปนครสวรรค์",
-         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-       }
-      ]
+		// 	 "attachment":{
+    //    "type":"template",
+	  //      "payload":{
+		// 	 		"template_type":"generic",
+		// 			"elements":[{
+		// 				"title":"🚎สวัสดีครับVanbotพร้อมให้บริการ🚎 คุณต้องการจะเดินทางไปที่ไหน ❓❓",
+		// 				"subtitle":"ตัวอย่างการใสข้อมูล ❗❗ < กรุงเทพไปชลบุรี > หรือ เลือกจากปุ่มด้านล่าง",
+		// 	 			"image_url":"https://scontent.fbkk2-1.fna.fbcdn.net/v/t1.0-9/18058138_1689678951326816_1841996356629707121_n.png?oh=08a8d4dab68a902db65b0fe5d8e5e0d9&oe=59898F34"
+		// 	 		}]
+	  //      }
+    // 	 },
+		// // 	"text":"ตอนนี้อยู่ที่ไหน:",
+    //  "quick_replies":[
+    //    {
+    //      "content_type":"text",
+    //      "title":"กรุงเทพไปสระบุรี",
+    //      "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+    //    },
+    //    {
+    //      "content_type":"text",
+    //      "title":"กรุงเทพไปลพบุรี",
+    //      "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+    //    },
+    //    {
+    //      "content_type":"text",
+    //      "title":"กรุงเทพไปสิงห์บุรี",
+    //      "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+    //    },
+    //    {
+    //      "content_type":"text",
+    //      "title":"กรุงเทพไปนครสวรรค์",
+    //      "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+    //    }
+    //   ]
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"generic",
+        "elements":[
+           {
+            "title":"Welcome to Peter\'s Hats",
+            "image_url":"https://petersfancybrownhats.com/company_image.png",
+            "subtitle":"We\'ve got the right hat for everyone.",
+            "default_action": {
+              "type": "web_url",
+              "url": "https://peterssendreceiveapp.ngrok.io/view?item=103",
+              "messenger_extensions": true,
+              "webview_height_ratio": "tall",
+              "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+            },
+            "buttons":[
+              {
+                "type":"web_url",
+                "url":"https://petersfancybrownhats.com",
+                "title":"View Website"
+              },{
+                "type":"postback",
+                "title":"Start Chatting",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD"
+              }
+            ]
+          }
+        ]
+      }
+    }
 		}
   };
 
