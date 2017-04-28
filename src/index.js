@@ -100,7 +100,9 @@ function receivedMessage(event) {
       case 'ช่วยด้วย':
         sendTextMessage(senderID, messageText);
         break;
-
+      case 'กรุงเทพไปนครสวรรค์':
+        sendQueueVan(senderID, messageText);
+        break;
       default:
         // sendTextMessage(senderID, messageText);
     }
@@ -158,7 +160,39 @@ function sendTextMessage(recipientId, messageText) {
 
   callSendAPI(messageData);
 }
+function sendQueueVan(recipientId, messageText) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+			 "attachment":{
+       "type":"template",
+	       "payload":{
+			 		"template_type":"generic",
+					"elements":[{
+						"title":"🚎สวัสดีครับVanbotพร้อมให้บริการ🚎 คุณต้องการจะเดินทางไปที่ไหน ❓❓",
+						"subtitle":"ตัวอย่างการใสข้อมูล ❗❗ < กรุงเทพไปชลบุรี > หรือ เลือกจากปุ่มด้านล่าง",
+			 			"image_url":"https://scontent.fbkk2-1.fna.fbcdn.net/v/t1.0-9/18058138_1689678951326816_1841996356629707121_n.png?oh=08a8d4dab68a902db65b0fe5d8e5e0d9&oe=59898F34"
+			 		},
+          {
+						"title":"🚎สวัสดีครับVanbotพร้อมให้บริการ🚎 คุณต้องการจะเดินทางไปที่ไหน ❓❓",
+						"subtitle":"ตัวอย่างการใสข้อมูล ❗❗ < กรุงเทพไปชลบุรี > หรือ เลือกจากปุ่มด้านล่าง",
+			 			"image_url":"https://scontent.fbkk2-1.fna.fbcdn.net/v/t1.0-9/18058138_1689678951326816_1841996356629707121_n.png?oh=08a8d4dab68a902db65b0fe5d8e5e0d9&oe=59898F34"
+			 		},
+          {
+						"title":"🚎สวัสดีครับVanbotพร้อมให้บริการ🚎 คุณต้องการจะเดินทางไปที่ไหน ❓❓",
+						"subtitle":"ตัวอย่างการใสข้อมูล ❗❗ < กรุงเทพไปชลบุรี > หรือ เลือกจากปุ่มด้านล่าง",
+			 			"image_url":"https://scontent.fbkk2-1.fna.fbcdn.net/v/t1.0-9/18058138_1689678951326816_1841996356629707121_n.png?oh=08a8d4dab68a902db65b0fe5d8e5e0d9&oe=59898F34"
+			 		}
+        ]
+	       }
+    	 }
+		}
+  };
 
+  callSendAPI(messageData);
+}
 function callSendAPI(messageData) {
   request({
     uri: 'https://graph.facebook.com/v2.6/me/messages',
