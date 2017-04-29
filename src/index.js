@@ -172,12 +172,12 @@ function sendQueueVan(recipientId, messageText) {
 			 		"template_type":"generic",
 					"elements":[{
 						"title":"🚎 ชนิกาทัวร์ 🚎",
-						"subtitle":"🚩🚩 กรุงเทพไปสระบุรี 🚩🚩\r\n🏤 สถานที่จำหน่ายตั๋ว: หมอชิต2\r\n🕑 รอบ: 8.00น. ❗❗\r\n💵 ราคา: 100 บาท ",
+						"subtitle":"🚩 กรุงเทพไปสระบุรี\r\n🏤 สถานที่จำหน่ายตั๋ว: หมอชิต2\r\n🕑 รอบ: 8.00น.\r\n💵 ราคา: 100 บาท ",
 			 			"image_url":"https://scontent.fbkk2-1.fna.fbcdn.net/v/t1.0-9/18058138_1689678951326816_1841996356629707121_n.png?oh=08a8d4dab68a902db65b0fe5d8e5e0d9&oe=59898F34",
             "buttons":[
               {
                 "type":"postback",
-                "title":" ตรวจสอบตำแหน่ง",
+                "title":"📍 ตรวจสอบตำแหน่ง",
                 "payload":"DEVELOPER_DEFINED_PAYLOAD"
               },{
                 "type":"phone_number",
