@@ -185,7 +185,7 @@ function sendQueueVan(recipientId, messageText) {
               {
                 "type":"web_url",
                 "title":"📍 ตรวจสอบตำแหน่ง",
-                "url":"https://petersfancybrownhats.com"
+                "url":"https://www.google.co.th/maps/place/%E0%B8%AA%E0%B8%96%E0%B8%B2%E0%B8%99%E0%B8%B5%E0%B8%AB%E0%B8%A1%E0%B8%AD%E0%B8%8A%E0%B8%B4%E0%B8%95/@13.8024444,100.5515614,17z/data=!3m1!4b1!4m5!3m4!1s0x30e29c40744d242d:0xea6ffad652c3aefc!8m2!3d13.8024392!4d100.5537501?hl=th&authuser=0"
               },{
                 "type":"phone_number",
                 "title":"📞 ติดต่อ",
