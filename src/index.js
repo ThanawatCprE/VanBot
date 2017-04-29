@@ -181,7 +181,7 @@ function sendQueueVan(recipientId, messageText) {
                 "payload":"DEVELOPER_DEFINED_PAYLOAD"
               },{
                 "type":"phone_number",
-                "title":"📞 ติดต่อ",
+                "title":"📞 ติดต่อพนักงาน",
                 "payload":"0856970832"
               },
               ]
