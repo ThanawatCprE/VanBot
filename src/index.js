@@ -177,11 +177,11 @@ function sendQueueVan(recipientId, messageText) {
             "buttons":[
               {
                 "type":"postback",
-                "title":"<center>🏤 สถานที่จำหน่ายตั๋ว</center>",
+                "title":"🏤 สถานที่จำหน่ายตั๋ว",
                 "payload":"DEVELOPER_DEFINED_PAYLOAD"
               },{
                 "type":"phone_number",
-                "title":"📞 ติดต่อพนักงาน",
+                "title":"📞 ติดต่อ",
                 "payload":"0856970832"
               },
               ]
