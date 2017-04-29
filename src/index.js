@@ -160,9 +160,13 @@ function sendTextMessage(recipientId, messageText) {
 
   callSendAPI(messageData);
 }
-var test ={
-
-}
+var we='"name":"sad"'
+var messageDataa =' {"recipient": {"id": "dw",'+we+'}}'
+var myObj = JSON.parse(messageDataa);
+console.log(myObj);
+console.log(myObj["recipient"]["id"]);
+var myObj = JSON.stringify(messageDataa);
+console.log(myObj);
 function sendQueueVan(recipientId, messageText) {
   var messageData = {
     recipient: {
@@ -179,9 +183,9 @@ function sendQueueVan(recipientId, messageText) {
 			 			"image_url":"https://scontent.fbkk2-1.fna.fbcdn.net/v/t1.0-9/18058138_1689678951326816_1841996356629707121_n.png?oh=08a8d4dab68a902db65b0fe5d8e5e0d9&oe=59898F34",
             "buttons":[
               {
-                "type":"postback",
+                "type":"web_url",
                 "title":"📍 ตรวจสอบตำแหน่ง",
-                "payload":"DEVELOPER_DEFINED_PAYLOAD"
+                "url":"https://petersfancybrownhats.com"
               },{
                 "type":"phone_number",
                 "title":"📞 ติดต่อ",
