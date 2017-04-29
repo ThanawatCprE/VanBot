@@ -177,13 +177,13 @@ function sendQueueVan(recipientId, messageText) {
             "buttons":[
               {
                 "type":"postback",
-                "title":"Veiw Location",
+                "title":"สถานที่จำหน่ายตั๋ว",
                 "payload":"DEVELOPER_DEFINED_PAYLOAD"
               },{
                 "type":"phone_number",
                 "title":"โทรออก",
                 "payload":"0856970832"
-              }
+              },
               ]
           },
           {
