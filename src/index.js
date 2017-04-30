@@ -199,7 +199,7 @@ function sendQueueVan(recipientId, messageText) {
          "type":"template",
            "payload":{
             "template_type":"generic",
-            "elements":[`+genneral_template(1)+`]
+            "elements":[`+genneral_template(3)+`]
            }
         }
       }
@@ -228,6 +228,7 @@ function genneral_template(data){
         }
         ]
     }`
+    if(i<data-1) temp+=',';
   }
   return temp;
 }
