@@ -115,6 +115,56 @@ function sendGenericMessage(recipientId, messageText) {
   // To be expanded in later sections
 }
 
+function sendTextMessage(recipientId, messageText) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+			 "attachment":{
+       "type":"template",
+	       "payload":{
+			 		"template_type":"generic",
+					"elements":[{
+						"title":"🚎 Vanbot พร้อมให้บริการครับ 🚩🚩 คุณต้องการจะเดินทางไปที่ไหน ❓❓",
+						"subtitle":"ตัวอย่างการใส่ข้อมูล ❗❗\r\n< กรุงเทพไปชลบุรี > หรือ เลือกจากปุ่มด้านล่าง",
+			 			"image_url":"https://scontent.fbkk2-1.fna.fbcdn.net/v/t1.0-9/18058138_1689678951326816_1841996356629707121_n.png?oh=08a8d4dab68a902db65b0fe5d8e5e0d9&oe=59898F34"
+			 		}]
+	       }
+    	 },
+		// 	"text":"ตอนนี้อยู่ที่ไหน:",
+     "quick_replies":[
+       {
+         "content_type":"text",
+         "title":"กรุงเทพไปสระบุรี",
+         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+       },
+       {
+         "content_type":"text",
+         "title":"กรุงเทพไปลพบุรี",
+         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+       },
+       {
+         "content_type":"text",
+         "title":"กรุงเทพไปสิงห์บุรี",
+         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+       },
+       {
+         "content_type":"text",
+         "title":"กรุงเทพไปนครสวรรค์",
+         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+       }
+      ]
+		}
+  };
+
+  callSendAPI(messageData);
+}
+
+console.log(typeof(myObj));
+// console.log(myObj["recipient"]["id"]);
+// var myObj = JSON.stringify(messageDataa);
+// console.log(myObj);
 
 function sendQueueVan(recipientId, messageText) {
   var genneral_template=`{
@@ -143,7 +193,7 @@ function sendQueueVan(recipientId, messageText) {
     "subtitle":"ตัวอย่างการใสข้อมูล ❗❗ < กรุงเทพไปชลบุรี > หรือ เลือกจากปุ่มด้านล่าง",
     "image_url":"https://scontent.fbkk2-1.fna.fbcdn.net/v/t1.0-9/18058138_1689678951326816_1841996356629707121_n.png?oh=08a8d4dab68a902db65b0fe5d8e5e0d9&oe=59898F34"
   }`
-  var genneral_message =`
+  var messageDataa =`
   {
     "recipient": {
       "id": `+recipientId+`
@@ -158,7 +208,7 @@ function sendQueueVan(recipientId, messageText) {
         }
       }
   }`
-  var myObj = JSON.parse(genneral_message);
+  var myObj = JSON.parse(messageDataa);
   var messageData = myObj;
   callSendAPI(messageData);
 }
