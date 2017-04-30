@@ -204,12 +204,13 @@ console.log(myObj);
 // console.log(myObj["recipient"]["id"]);
 // var myObj = JSON.stringify(messageDataa);
 // console.log(myObj);
+
 function sendQueueVan(recipientId, messageText) {
   var messageData = {
-    recipient: {
-      id: recipientId
+    "recipient": {
+      "id": recipientId
     },
-    message: {
+    "message": {
 			 "attachment":{
        "type":"template",
 	       "payload":{
@@ -245,7 +246,7 @@ function sendQueueVan(recipientId, messageText) {
     	 }
 		}
   };
-
+  console.log(messageData);
   callSendAPI(messageData);
 }
 function callSendAPI(messageData) {
