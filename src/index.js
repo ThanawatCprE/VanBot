@@ -103,7 +103,7 @@ function receivedMessage(event) {
         }
         break;
       case 2 :
-        if(messageText.match("/กรุงเทพ/g")){
+        if(messageText.match(/กรุงเทพ/g)){
             sendQueueVan(senderID);
         }
         state = 1;
