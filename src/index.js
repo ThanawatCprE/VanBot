@@ -160,19 +160,53 @@ function sendTextMessage(recipientId, messageText) {
 
   callSendAPI(messageData);
 }
-var we='"name":"sad"'
-var messageDataa =' {"recipient": {"id": "dw",'+we+'}}'
+var we=`{
+  "title":"🚎 ชนิกาทัวร์ กรุงเทพไปนครสวรรค์ 🚩",
+  "subtitle":"🏤 สถานที่จำหน่ายตั๋ว: หมอชิต2🕑 รอบ: 8.00น.💵 ราคา: 100 บาท ",
+  "image_url":"https://scontent.fbkk2-1.fna.fbcdn.net/v/t1.0-9/18058138_1689678951326816_1841996356629707121_n.png?oh=08a8d4dab68a902db65b0fe5d8e5e0d9&oe=59898F34",
+  "buttons":[
+    {
+      "type":"web_url",
+      "title":"📍 ตรวจสอบตำแหน่ง",
+      "url":"https://www.google.co.th/maps/place/%E0%B8%AA%E0%B8%96%E0%B8%B2%E0%B8%99%E0%B8%B5%E0%B8%AB%E0%B8%A1%E0%B8%AD%E0%B8%8A%E0%B8%B4%E0%B8%95/@13.8024444,100.5515614,17z/data=!3m1!4b1!4m5!3m4!1s0x30e29c40744d242d:0xea6ffad652c3aefc!8m2!3d13.8024392!4d100.5537501?hl=th&authuser=0"
+    },{
+      "type":"phone_number",
+      "title":"📞 ติดต่อ",
+      "payload":"0856970832"
+    }
+    ]
+},
+{
+  "title":"🚎สวัสดีครับVanbotพร้อมให้บริการ🚎 คุณต้องการจะเดินทางไปที่ไหน ❓❓",
+  "subtitle":"ตัวอย่างการใสข้อมูล ❗❗ < กรุงเทพไปชลบุรี > หรือ เลือกจากปุ่มด้านล่าง",
+  "image_url":"https://scontent.fbkk2-1.fna.fbcdn.net/v/t1.0-9/18058138_1689678951326816_1841996356629707121_n.png?oh=08a8d4dab68a902db65b0fe5d8e5e0d9&oe=59898F34"
+},
+{
+  "title":"🚎สวัสดีครับVanbotพร้อมให้บริการ🚎 คุณต้องการจะเดินทางไปที่ไหน ❓❓",
+  "subtitle":"ตัวอย่างการใสข้อมูล ❗❗ < กรุงเทพไปชลบุรี > หรือ เลือกจากปุ่มด้านล่าง",
+  "image_url":"https://scontent.fbkk2-1.fna.fbcdn.net/v/t1.0-9/18058138_1689678951326816_1841996356629707121_n.png?oh=08a8d4dab68a902db65b0fe5d8e5e0d9&oe=59898F34"
+}`
+var messageDataa =`{
+   "attachment":{
+   "type":"template",
+     "payload":{
+      "template_type":"generic",
+      "elements":[`+we+`
+    ]
+     }
+   }
+}`
 var myObj = JSON.parse(messageDataa);
-console.log(myObj);
-console.log(myObj["recipient"]["id"]);
-var myObj = JSON.stringify(messageDataa);
-console.log(myObj);
+console.log(myObj["attachment"]["payload"]["elements"][0]["buttons"]);
+// console.log(myObj["recipient"]["id"]);
+// var myObj = JSON.stringify(messageDataa);
+// console.log(myObj);
 function sendQueueVan(recipientId, messageText) {
   var messageData = {
     recipient: {
       id: recipientId
     },
-    message: {
+    message: `{
 			 "attachment":{
        "type":"template",
 	       "payload":{
@@ -190,7 +224,7 @@ function sendQueueVan(recipientId, messageText) {
                 "type":"phone_number",
                 "title":"📞 ติดต่อ",
                 "payload":"0856970832"
-              },
+              }
               ]
           },
           {
@@ -206,7 +240,7 @@ function sendQueueVan(recipientId, messageText) {
         ]
 	       }
     	 }
-		}
+		}`
   };
 
   callSendAPI(messageData);
@@ -214,27 +248,6 @@ function sendQueueVan(recipientId, messageText) {
 function callSendAPI(messageData) {
   request({
     uri: 'https://graph.facebook.com/v2.6/me/messages',
-    qs: { access_token: access },
-    method: 'POST',
-    json: messageData
-
-  }, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      var recipientId = body.recipient_id;
-      var messageId = body.message_id;
-
-      console.log("Successfully sent generic message with id %s to recipient %s",
-        messageId, recipientId);
-    } else {
-      console.error("Unable to send message.");
-      console.error(response);
-      console.error(error);
-    }
-  });
-}
-function callSendAP(messageData) {
-  request({
-    uri: 'https://graph.facebook.com/v2.6/me/messenger_profile',
     qs: { access_token: access },
     method: 'POST',
     json: messageData
