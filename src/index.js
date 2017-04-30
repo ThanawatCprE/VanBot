@@ -204,16 +204,15 @@ var we=`{
 function sendQueueVan(recipientId, messageText) {
   var messageDataa =`{
     "recipient": {
-      id: `+recipientId+`
+      "id": `+recipientId+`
     },
     "message":{
      "attachment":{
-     "type":"template",
-       "payload":{
-        "template_type":"generic",
-        "elements":[`+we+`
-      ]
-       }
+       "type":"template",
+         "payload":{
+            "template_type":"generic",
+            "elements":[`+we+`]
+         }
      }
   };
 }`
