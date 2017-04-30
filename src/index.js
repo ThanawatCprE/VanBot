@@ -99,11 +99,13 @@ function receivedMessage(event) {
       case 1 :
         if(messageText=="ช่วยด้วย"){
           sendTextMessage(senderID);
+          state =2;
         }
-        state =2;
         break;
       case 2 :
-        sendQueueVan(senderID);
+        if(messageText.match("/กรุงเทพ/g")){
+            sendQueueVan(senderID);
+        }
         state = 1;
         break;
       default:
