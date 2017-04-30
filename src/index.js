@@ -161,11 +161,6 @@ function sendTextMessage(recipientId, messageText) {
   callSendAPI(messageData);
 }
 
-console.log(typeof(myObj));
-// console.log(myObj["recipient"]["id"]);
-// var myObj = JSON.stringify(messageDataa);
-// console.log(myObj);
-
 function sendQueueVan(recipientId, messageText) {
   var genneral_template=`{
     "title":"🚎 ชนิกาทัวร์ กรุงเทพไปนครสวรรค์ 🚩",
@@ -193,7 +188,7 @@ function sendQueueVan(recipientId, messageText) {
     "subtitle":"ตัวอย่างการใสข้อมูล ❗❗ < กรุงเทพไปชลบุรี > หรือ เลือกจากปุ่มด้านล่าง",
     "image_url":"https://scontent.fbkk2-1.fna.fbcdn.net/v/t1.0-9/18058138_1689678951326816_1841996356629707121_n.png?oh=08a8d4dab68a902db65b0fe5d8e5e0d9&oe=59898F34"
   }`
-  var messageDataa =`
+  var genneral_message =`
   {
     "recipient": {
       "id": `+recipientId+`
@@ -208,7 +203,7 @@ function sendQueueVan(recipientId, messageText) {
         }
       }
   }`
-  var myObj = JSON.parse(messageDataa);
+  var myObj = JSON.parse(genneral_message);
   var messageData = myObj;
   callSendAPI(messageData);
 }
