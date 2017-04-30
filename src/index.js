@@ -91,17 +91,21 @@ function receivedMessage(event) {
 
   var messageText = message.text;
   var messageAttachments = message.attachments;
-
+  var state = 1;
   if (messageText) {
 
     // If we receive a text message, check to see if it matches a keyword
     // and send back the example. Otherwise, just echo the text we received.
-    switch (messageText) {
-      case 'ช่วยด้วย':
-        sendTextMessage(senderID);
+    switch (state) {
+      case 1 :
+        if(messageText=="ช่วยด้วย"){
+          sendTextMessage(senderID);
+        }
+        state =2;
         break;
-      case 'กรุงเทพไปนครสวรรค์':
+      case 2 :
         sendQueueVan(senderID);
+        state = 1;
         break;
       default:
         // sendTextMessage(senderID, messageText);
