@@ -210,7 +210,7 @@ function sendQueueVan(recipientId, messageText) {
 }
 
 function genneral_template(data){
-  var temp;
+  var temp = '';
   for(var i=0;i<data;i++){
     temp =temp + `{
       "title":"🚎 ชนิกาทัวร์ กรุงเทพไปนครสวรรค์ 🚩",
