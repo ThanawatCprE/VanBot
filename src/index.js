@@ -76,7 +76,7 @@ app.post('/webhook', function (req, res) {
     res.sendStatus(200);
   }
 });
-
+var state = 1;
 function receivedMessage(event) {
   var senderID = event.sender.id;
   var recipientID = event.recipient.id;
@@ -91,7 +91,6 @@ function receivedMessage(event) {
 
   var messageText = message.text;
   var messageAttachments = message.attachments;
-  var state = 1;
   if (messageText) {
 
     // If we receive a text message, check to see if it matches a keyword
