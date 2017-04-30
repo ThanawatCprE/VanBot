@@ -195,7 +195,7 @@ function sendQueueVan(recipientId, messageText) {
   }`
   var messageDataa =`{
     "recipient": {
-      "id": `recipientId`
+      "id": `+recipientId+`
     },"message": {
      "attachment":{
      "type":"template",
