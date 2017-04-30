@@ -243,7 +243,7 @@ function callSendAPI(messageData) {
  json: data
 
  }, function (error, response, body) {
- if (!error && response.statusCode == 400) {
+ if (!error && response.statusCode == 200) {
    console.log("Thread Settings successfully changed!");
  } else {
    console.error("Failed calling Thread Reference API", response.statusCode, response.statusMessage, body.error);
