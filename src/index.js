@@ -182,7 +182,7 @@ function sendQueueVan(recipientId, messageText) {
   var messageData = myObj;
   callSendAPI(messageData);
 }
-
+console.log(genneral_template(2));
 function genneral_template(data){
   var temp ;
   for(var i=0;i<data;i++){
@@ -204,7 +204,7 @@ function genneral_template(data){
         }
         ]
       }`
-    if(i<data.length-1){
+    if(i<data-1){
       temp +=','
     }
   }
