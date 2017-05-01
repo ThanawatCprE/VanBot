@@ -98,7 +98,7 @@ function receivedMessage(event) {
       case 1 :
         if(messageText.match(/ช่วยด้วย|เริ่มต้นใช้งาน/gi)){
           sendTextMessage(senderID);
-          state =2;
+          // state =2;
         }
         break;
       case 2 :
