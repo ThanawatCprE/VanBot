@@ -96,7 +96,7 @@ function receivedMessage(event) {
     // and send back the example. Otherwise, just echo the text we received.
     switch (state) {
       case 1 :
-        if(messageText.match(/เริ่มต้นใช้งาน/g)){
+        if(messageText.match(/ช่วยด้วย|เริ่มต้นใช้งาน/gi)){
           sendTextMessage(senderID);
           state =2;
         }
