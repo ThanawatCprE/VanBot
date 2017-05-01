@@ -62,7 +62,6 @@ app.post('/webhook', function (req, res) {
         if (event.message) {
           receivedMessage(event);
         } else {
-					callSendAP(test);
           console.log("Webhook received unknown event: ", event);
         }
       });
@@ -97,7 +96,7 @@ function receivedMessage(event) {
     // and send back the example. Otherwise, just echo the text we received.
     switch (state) {
       case 1 :
-        if(messageText=="ช่วยด้วย"){
+        if(messageText.match(/ช่วยด้วย|เริ่มต้นใช้งาน/g)){
           sendTextMessage(senderID);
           state =2;
         }
@@ -243,7 +242,7 @@ function callSendAPI(messageData) {
  // json: data
  //
  // }, function (error, response, body) {
- // if (!error && response.statusCode == 200) {
+ // if (!error && response.statusCode == 400) {
  //   console.log("Thread Settings successfully changed!");
  // } else {
  //   console.error("Failed calling Thread Reference API", response.statusCode, response.statusMessage, body.error);
@@ -255,7 +254,7 @@ function callSendAPI(messageData) {
  // var data = {
  //   "setting_type":"greeting",
  //     "greeting":{
- //       "text":"สวัสดี {{user_full_name}} \r\nพิมคำว่า 'ช่วยด้วย' เพื่อเปิดใช้งาน VanBOT 🚎"
+ //       "text":"สวัสดี {{user_full_name}} \r\nกดที่ปุ่ม 'เริ่มต้นใช้งาน' เพื่อเปิดใช้งาน VanBOT 🚎"
  //     }
  // };
  // callThreadSettingsAPI(data);
