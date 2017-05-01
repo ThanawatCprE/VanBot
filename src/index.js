@@ -81,7 +81,10 @@ function receivedMessage(event) {
   var recipientID = event.recipient.id;
   var timeOfMessage = event.timestamp;
   var message = event.message;
-
+  if(event.messageobj.text=='startchattingevent'){
+    sendTextMessage(senderID);
+    // state =2;
+  }
   console.log("Received message for user %d and page %d at %d with message:",
     senderID, recipientID, timeOfMessage);
   console.log(JSON.stringify(message));
@@ -96,7 +99,7 @@ function receivedMessage(event) {
     // and send back the example. Otherwise, just echo the text we received.
     switch (state) {
       case 1 :
-        if(event.messageobj.text=='startchattingevent'){
+        if(messageText.match(/ช่วยด้วย|เริ่มต้นใช้งาน/gi)){
           sendTextMessage(senderID);
           state =2;
         }
