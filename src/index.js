@@ -62,7 +62,7 @@ app.post('/webhook', function (req, res) {
         if (event.message) {
           receivedMessage(event);
         } else {
-          if(event.postback && event.postback.payload === GET_STARTED_PAYLOAD )
+          if(event.postback && event.postback.payload == "GET_STARTED_PAYLOAD" )
             {
                     //present user with some greeting or call to action
                     var msg = "พิมข้อความ 'ช่วยด้วย' เพื่อเปิดใช้งาน VanBOT 🚎"
