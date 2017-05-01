@@ -62,12 +62,12 @@ app.post('/webhook', function (req, res) {
         if (event.message) {
           receivedMessage(event);
         } else {
-          // if(event.postback && event.postback.payload === USER_DEFINED_PAYLOAD )
-          //   {
-          //           //present user with some greeting or call to action
-          //           var msg = "Hi ,I'm a Bot ,and I was created to help you easily .... "
-          //           //sendMessage(event.sender.id,msg);
-          //   }
+          if(event.postback && event.postback.payload === USER_DEFINED_PAYLOAD ){
+                    //present user with some greeting or call to action
+                    // var msg = "พิมข้อความ 'ช่วยด้วย' เพื่อเปิดใช้งาน VanBOT 🚎"
+                    sendTextMessage(event.sender.id)
+                    // sendMessage(event.sender.id,msg);
+            }
           console.log("Webhook received unknown event: ", event);
         }
       });
@@ -127,7 +127,7 @@ function sendGenericMessage(recipientId, messageText) {
   // To be expanded in later sections
 }
 
-function sendTextMessage(recipientId, messageText) {
+function sendTextMessage(recipientId) {
   var messageData = {
     recipient: {
       id: recipientId
