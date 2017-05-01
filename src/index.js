@@ -59,7 +59,7 @@ app.post('/webhook', function (req, res) {
 
       // Iterate over each messaging event
       entry.messaging.forEach(function(event) {
-        if (event) {
+        if (event.message) {
           receivedMessage(event);
         } else {
           console.log("Webhook received unknown event: ", event);
@@ -81,7 +81,7 @@ function receivedMessage(event) {
   var recipientID = event.recipient.id;
   var timeOfMessage = event.timestamp;
   var message = event.message;
-  // sendTextMessage(senderID);
+
   console.log("Received message for user %d and page %d at %d with message:",
     senderID, recipientID, timeOfMessage);
   console.log(JSON.stringify(message));
@@ -90,8 +90,8 @@ function receivedMessage(event) {
 
   var messageText = message.text;
   var messageAttachments = message.attachments;
-  if (messageText) {
-    console.log(messageText);
+  if (event) {
+
     // If we receive a text message, check to see if it matches a keyword
     // and send back the example. Otherwise, just echo the text we received.
     switch (state) {
