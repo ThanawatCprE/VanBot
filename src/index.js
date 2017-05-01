@@ -102,7 +102,7 @@ function receivedMessage(event) {
     // and send back the example. Otherwise, just echo the text we received.
     switch (state) {
       case 1 :
-        if(messageText.match(/ช่วยด้วย/g)){
+        if(messageText.match(/ช่วยด้วย/gi)){
           sendTextMessage(senderID);
           state = 2;
         }else{
