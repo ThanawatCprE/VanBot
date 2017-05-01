@@ -66,7 +66,7 @@ app.post('/webhook', function (req, res) {
             {
                     //present user with some greeting or call to action
                     var msg = "พิมข้อความ 'ช่วยด้วย' เพื่อเปิดใช้งาน VanBOT 🚎"
-                    sendTextMessage(event.sender.id);
+                    sendGetstart(event.sender.id,msg);
             }
           console.log("Webhook received unknown event: ", event);
         }
@@ -128,7 +128,9 @@ function sendGetstart(recipientId, messageText) {
     recipient: {
       id: recipientId
     },
-    message: messageText,
+    message: {
+      "text":messageText
+    }
   };
   callSendAPI(messageData);
 }
