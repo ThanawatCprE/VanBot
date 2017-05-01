@@ -90,15 +90,15 @@ function receivedMessage(event) {
 
   var messageText = message.text;
   var messageAttachments = message.attachments;
-  if (event) {
+  if (messageText) {
 
     // If we receive a text message, check to see if it matches a keyword
     // and send back the example. Otherwise, just echo the text we received.
     switch (state) {
       case 1 :
-        if(messageText.match(/ช่วยด้วย|เริ่มต้นใช้งาน/gi)){
+        if(event.messageobj.text=='startchattingevent'){
           sendTextMessage(senderID);
-          // state =2;
+          state =2;
         }
         break;
       case 2 :
