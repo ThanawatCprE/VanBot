@@ -62,6 +62,12 @@ app.post('/webhook', function (req, res) {
         if (event.message) {
           receivedMessage(event);
         } else {
+          // if(event.postback && event.postback.payload === USER_DEFINED_PAYLOAD )
+          //   {
+          //           //present user with some greeting or call to action
+          //           var msg = "Hi ,I'm a Bot ,and I was created to help you easily .... "
+          //           //sendMessage(event.sender.id,msg);
+          //   }
           console.log("Webhook received unknown event: ", event);
         }
       });
@@ -81,10 +87,7 @@ function receivedMessage(event) {
   var recipientID = event.recipient.id;
   var timeOfMessage = event.timestamp;
   var message = event.message;
-  if(event.postback.payload === "GET_STARTED_PAYLOAD"){
-    sendTextMessage(senderID);
-    // state =2;
-  }
+
   console.log("Received message for user %d and page %d at %d with message:",
     senderID, recipientID, timeOfMessage);
   console.log(JSON.stringify(message));
@@ -99,7 +102,7 @@ function receivedMessage(event) {
     // and send back the example. Otherwise, just echo the text we received.
     switch (state) {
       case 1 :
-        if(messageText.match(/ช่วยด้วย|เริ่มต้นใช้งาน/gi)){
+        if(messageText.match(/ช่วยด้วย|เริ่มต้นใช้งาน/g)){
           sendTextMessage(senderID);
           state =2;
         }
