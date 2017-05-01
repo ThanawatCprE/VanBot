@@ -116,7 +116,7 @@ function receivedMessage(event) {
              state = 1;
         }
         else{
-            sendTextMessage(senderID);
+            // sendTextMessage(senderID);
         }
         break;
       default:
