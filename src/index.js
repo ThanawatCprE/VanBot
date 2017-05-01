@@ -113,7 +113,7 @@ function receivedMessage(event) {
       case 2 :
         if(messageText.match(/ไป/g)&&messageText!="ไป"){
             sendQueueVan(senderID);
-             state = 3;
+             state = 1;
         }
         else{
             sendTextMessage(senderID);
