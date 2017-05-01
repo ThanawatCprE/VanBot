@@ -119,7 +119,7 @@ function receivedMessage(event) {
         // sendTextMessage(senderID, messageText);
     }
   } else if (messageAttachments) {
-    sendTextMessage(senderID, "Message with attachment received");
+    // sendTextMessage(senderID, "Message with attachment received");
   }
 }
 
@@ -128,7 +128,7 @@ function sendGetstart(recipientId, messageText) {
     recipient: {
       id: recipientId
     },
-    message: messageText
+    message: messageText,
   };
   callSendAPI(messageData);
 }
