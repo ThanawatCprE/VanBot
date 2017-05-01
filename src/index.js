@@ -104,15 +104,19 @@ function receivedMessage(event) {
       case 1 :
         if(messageText.match(/ช่วยด้วย/g)){
           sendTextMessage(senderID);
-          state =2;
+          state = 2;
+        }else{
+          var msg = "พิมข้อความ 'ช่วยด้วย' เพื่อเปิดใช้งาน VanBOT 🚎"
+          sendGetstart(senderID,msg);
         }
         break;
       case 2 :
         if(messageText.match(/ไป/g)&&messageText!="ไป"){
             sendQueueVan(senderID);
+             state = 3;
         }
         else{
-          sendTextMessage(senderID);
+            sendTextMessage(senderID);
         }
         break;
       default:
