@@ -81,7 +81,7 @@ function receivedMessage(event) {
   var recipientID = event.recipient.id;
   var timeOfMessage = event.timestamp;
   var message = event.message;
-  if(event.postback.payload === GET_STARTED_PAYLOAD){
+  if(event.postback.payload === "GET_STARTED_PAYLOAD"){
     sendTextMessage(senderID);
     // state =2;
   }
