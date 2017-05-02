@@ -14,7 +14,7 @@ client.query("select * from cdetail where rcompany = 'กรุงเทพไ�
   if (err) throw err;
   json=rows.rows
   console.log(json[0]);
-  client.end();
+  // client.end();
 })
 
 // var query = client.query('select * from company;');

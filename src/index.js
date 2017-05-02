@@ -7,16 +7,9 @@ const pg = require("pg");
 const token = process.env.FB_VARIFY_TOKEN
 const access = process.env.FB_ACCESS_TOKEN
 
-
+Querydata();
 var json;
-var client = new pg.Client({
-  user: "ifeygszgzemhgc",
-  password: "c6500d57a0d859b425fbf6808052bcf2d0955da468aa90ff069c6c9c85cc536f",
-  database: "djmi984ka9f4r",
-  port: 5432,
-  host: "ec2-23-23-111-171.compute-1.amazonaws.com",
-  ssl: true
-});
+
 
 app.set('port',(process.env.PORT || 5000))
 
@@ -189,7 +182,7 @@ function sendQueueVan(recipientId) {
          "type":"template",
            "payload":{
             "template_type":"generic",
-            "elements":[`+genneral_template(3)+`]
+            "elements":[`+genneral_template(json)+`]
            }
         }
       }
@@ -198,12 +191,12 @@ function sendQueueVan(recipientId) {
   var messageData = myObj;
   callSendAPI(messageData);
 }
-
+// "title":"🚎 ชนิกาทัวร์ กรุงเทพไปนครสวรรค์ 🚩",
 function genneral_template(data){
   var temp = '';
-  for(var i=0;i<data;i++){
+  for(var i=0;i<data.length;i++){
     temp +=`{
-      "title":"🚎 ชนิกาทัวร์ กรุงเทพไปนครสวรรค์ 🚩",
+      "title":"🚎 `+data[i].cname+` กรุงเทพไปนครสวรรค์ 🚩",
       "subtitle":"🏤 สถานที่จำหน่ายตั๋ว: หมอชิต2\\r\\n🕑 รอบ: 8.00น.\\r\\n💵 ราคา: 100 บาท ",
       "image_url":"https://scontent.fbkk2-1.fna.fbcdn.net/v/t1.0-9/18058138_1689678951326816_1841996356629707121_n.png?oh=08a8d4dab68a902db65b0fe5d8e5e0d9&oe=59898F34",
       "buttons":[
@@ -218,7 +211,7 @@ function genneral_template(data){
         }
         ]
     }`
-    if(i<data-1) temp+=',';
+    if(i<data.length-1) temp+=',';
   }
   return temp;
 }
@@ -245,6 +238,14 @@ function callSendAPI(messageData) {
 }
 
 function Querydata(){
+  var client = new pg.Client({
+    user: "ifeygszgzemhgc",
+    password: "c6500d57a0d859b425fbf6808052bcf2d0955da468aa90ff069c6c9c85cc536f",
+    database: "djmi984ka9f4r",
+    port: 5432,
+    host: "ec2-23-23-111-171.compute-1.amazonaws.com",
+    ssl: true
+  });
   client.connect();
   client.query("select * from cdetail;",function(err,rows,fields){
     if (err) throw err;
