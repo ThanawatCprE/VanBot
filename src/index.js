@@ -253,7 +253,7 @@ function Querydata(temp){
   client.query("select * from cdetail where rcompany = ''"+temp+"' ;",function(err,rows,fields){
     if (err) throw err;
     json=rows.rows
-    client.end();
+    // client.end();
   })
 }
  // function callThreadSettingsAPI(data) { //Thread Reference API
