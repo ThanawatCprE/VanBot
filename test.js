@@ -8,15 +8,21 @@ var client = new pg.Client({
   host: "ec2-23-23-111-171.compute-1.amazonaws.com",
   ssl: true
 });
-
+var json='';
 client.connect();
-
-var query = client.query('select * from company;');
-
-query.on('row', function(row) {
-  var x = row.name
-  console.log(x);
+client.query("select cname from cdetail;",function(err,rows,fields){
+  if (err) throw err;
+  json=rows.rows
+  console.log(json[0]);
   client.end();
-});
+})
+
+// var query = client.query('select * from company;');
+//
+// query.on('row', function(row) {
+//   var x = row.name
+//   console.log(x);
+//   client.end();
+// });
 
 // query.on('end');
