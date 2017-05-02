@@ -13,7 +13,7 @@ client.connect();
 client.query("select * from cdetail where rcompany = 'กรุงเทพไปสระบุรี' ;",function(err,rows,fields){
   if (err) throw err;
   json=rows.rows
-  console.log(json[0]);
+  console.log(json[0].cimage);
   // client.end();
 })
 
