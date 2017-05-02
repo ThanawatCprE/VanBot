@@ -97,7 +97,7 @@ function receivedMessage(event) {
         break;
       case 2 :
         if(messageText.match(/ไป/g)&&messageText!="ไป"){
-            Querydata();
+            Querydata(messageText);
             sendQueueVan(senderID);
              state = 1;
         }
@@ -238,7 +238,7 @@ function callSendAPI(messageData) {
   });
 }
 
-function Querydata(){
+function Querydata(temp){
   var client = new pg.Client({
     user: "ifeygszgzemhgc",
     password: "c6500d57a0d859b425fbf6808052bcf2d0955da468aa90ff069c6c9c85cc536f",
@@ -248,7 +248,7 @@ function Querydata(){
     ssl: true
   });
   client.connect();
-  client.query("select * from cdetail;",function(err,rows,fields){
+  client.query("select * from cdetail where rcompany ='"+temp+"';",function(err,rows,fields){
     if (err) throw err;
     json=rows.rows
     client.end();
