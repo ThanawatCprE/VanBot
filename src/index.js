@@ -204,7 +204,7 @@ function genneral_template(data){
         {
           "type":"web_url",
           "title":"📍 ตรวจสอบตำแหน่ง",
-          "url":"`+data[i].clocation+`"
+          "url":"`data[i].cloa`"
         },{
           "type":"phone_number",
           "title":"📞 ติดต่อ",
@@ -237,9 +237,8 @@ function callSendAPI(messageData) {
     }
   });
 }
-
-function Querydata(temp){
-  var client = new pg.Client({
+function connectPost(){
+	var client = new pg.Client({
     user: "ifeygszgzemhgc",
     password: "c6500d57a0d859b425fbf6808052bcf2d0955da468aa90ff069c6c9c85cc536f",
     database: "djmi984ka9f4r",
@@ -248,6 +247,9 @@ function Querydata(temp){
     ssl: true
   });
   client.connect();
+}
+function Querydata(temp){
+  connectPost();
   client.query("select * from cdetail where rcompany ='"+temp+"';",function(err,rows,fields){
     if (err) throw err;
     json=rows.rows
