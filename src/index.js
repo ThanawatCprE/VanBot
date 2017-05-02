@@ -204,7 +204,7 @@ function genneral_template(data){
         {
           "type":"web_url",
           "title":"📍 ตรวจสอบตำแหน่ง",
-          "url":"`data[i].cloa`"
+          "url":"`data[i].clocation`"
         },{
           "type":"phone_number",
           "title":"📞 ติดต่อ",
