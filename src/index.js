@@ -105,13 +105,16 @@ function receivedMessage(event) {
       case 2 :
         if(messageText.match(/ไป/g)&&messageText!="ไป"){
             Querydata(messageText);
-            sendQueueVan(senderID);
-             state = 1;
+            state = 3;
         }
         else{
             sendTextMessage(senderID);
         }
         break;
+      case 3 :
+          sendQueueVan(senderID);
+          state = 1;
+      break;
       default:
         // sendTextMessage(senderID, messageText);
     }
@@ -247,7 +250,7 @@ function callSendAPI(messageData) {
 
 function Querydata(temp){
   client.connect();
-  client.query('select * from cdetail where rcompany = "'+temp+'" ;',function(err,rows,fields){
+  client.query("select * from cdetail where rcompany = ''"+temp+"' ;",function(err,rows,fields){
     if (err) throw err;
     json=rows.rows
     client.end();

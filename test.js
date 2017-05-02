@@ -10,7 +10,7 @@ var client = new pg.Client({
 });
 var json='';
 client.connect();
-client.query("select cname from cdetail;",function(err,rows,fields){
+client.query("select * from cdetail where rcompany = 'กรุงเทพไปสระบุรี' ;",function(err,rows,fields){
   if (err) throw err;
   json=rows.rows
   console.log(json[0]);
