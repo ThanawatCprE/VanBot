@@ -104,17 +104,13 @@ function receivedMessage(event) {
         break;
       case 2 :
         if(messageText.match(/ไป/g)&&messageText!="ไป"){
-            Querydata(messageText);
-            state = 3;
+            sendQueueVan(senderID);
+             state = 1;
         }
         else{
             sendTextMessage(senderID);
         }
         break;
-      case 3 :
-          sendQueueVan(senderID);
-          state = 1;
-      break;
       default:
         // sendTextMessage(senderID, messageText);
     }
@@ -193,7 +189,7 @@ function sendQueueVan(recipientId) {
          "type":"template",
            "payload":{
             "template_type":"generic",
-            "elements":[`+genneral_template(json)+`]
+            "elements":[`+genneral_template(3)+`]
            }
         }
       }
@@ -205,9 +201,9 @@ function sendQueueVan(recipientId) {
 
 function genneral_template(data){
   var temp = '';
-  for(var i=0;i<data.length;i++){
+  for(var i=0;i<data;i++){
     temp +=`{
-      "title":"🚎 `+data[i].cname+` `+data[i].rcompany+` 🚩",
+      "title":"🚎 ชนิกาทัวร์ กรุงเทพไปนครสวรรค์ 🚩",
       "subtitle":"🏤 สถานที่จำหน่ายตั๋ว: หมอชิต2\\r\\n🕑 รอบ: 8.00น.\\r\\n💵 ราคา: 100 บาท ",
       "image_url":"https://scontent.fbkk2-1.fna.fbcdn.net/v/t1.0-9/18058138_1689678951326816_1841996356629707121_n.png?oh=08a8d4dab68a902db65b0fe5d8e5e0d9&oe=59898F34",
       "buttons":[
@@ -248,12 +244,12 @@ function callSendAPI(messageData) {
   });
 }
 
-function Querydata(temp){
+function Querydata(){
   client.connect();
-  client.query("select * from cdetail where rcompany = ''"+temp+"' ;",function(err,rows,fields){
+  client.query("select * from cdetail;",function(err,rows,fields){
     if (err) throw err;
     json=rows.rows
-    // client.end();
+    client.end();
   })
 }
  // function callThreadSettingsAPI(data) { //Thread Reference API
