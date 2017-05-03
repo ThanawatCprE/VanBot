@@ -251,9 +251,27 @@ function Querydata(temp){
   client.query("select * from cdetail where rcompany ='"+temp+"';",function(err,rows,fields){
     if (err) throw err;
     json=rows.rows
-    client.end();
+    // client.end();
   })
 }
+// function Queryphone(temp){
+// 	var phone;
+//   var client = new pg.Client({
+//     user: "ifeygszgzemhgc",
+//     password: "c6500d57a0d859b425fbf6808052bcf2d0955da468aa90ff069c6c9c85cc536f",
+//     database: "djmi984ka9f4r",
+//     port: 5432,
+//     host: "ec2-23-23-111-171.compute-1.amazonaws.com",
+//     ssl: true
+//   });
+//   client.connect();
+//   client.query("select phone from company where name ='"+temp+"';",function(err,rows,fields){
+//     if (err) throw err;
+//     phone=rows.rows
+//     client.end();
+//   })
+// 	return phone;
+// }
  // function callThreadSettingsAPI(data) { //Thread Reference API
  // request({
  // uri: 'https://graph.facebook.com/v2.6/me/thread_settings',

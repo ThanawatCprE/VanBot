@@ -1,22 +1,27 @@
 var pg = require("pg");
+function test(){
+  var client = new pg.Client({
+    user: "ifeygszgzemhgc",
+    password: "c6500d57a0d859b425fbf6808052bcf2d0955da468aa90ff069c6c9c85cc536f",
+    database: "djmi984ka9f4r",
+    port: 5432,
+    host: "ec2-23-23-111-171.compute-1.amazonaws.com",
+    ssl: true
+  });
+  var json='';
+  client.connect();
+  client.query("select * from company where name = 'ชนิกาทัวร์' ;",function(err,rows,fields){
+    if (err) throw err;
+    json=JSON.stringify(rows.rows)
+    // console.log(json);
+    return json;
+    client.end();
+  })
 
-var client = new pg.Client({
-  user: "ifeygszgzemhgc",
-  password: "c6500d57a0d859b425fbf6808052bcf2d0955da468aa90ff069c6c9c85cc536f",
-  database: "djmi984ka9f4r",
-  port: 5432,
-  host: "ec2-23-23-111-171.compute-1.amazonaws.com",
-  ssl: true
-});
-var json='';
-client.connect();
-client.query("select phone from company where name = 'ชนิกาทัวร์' ;",function(err,rows,fields){
-  if (err) throw err;
-  json=rows.rows
-  console.log(json[0].cimage);
-  // client.end();
-})
-
+}
+var x = test();
+console.log(x);
+// console.log(test());
 // var query = client.query('select * from company;');
 //
 // query.on('row', function(row) {
