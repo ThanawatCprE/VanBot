@@ -13,7 +13,7 @@ client.connect();
 client.query("select * from company;",function(err,rows,fields){
   if (err) throw err;
   json=rows.rows
-  console.log(json[1].name['ชนิกาทัวร์']);
+  console.log(json[1]);
   // client.end();
 })
 
