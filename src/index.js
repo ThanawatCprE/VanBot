@@ -271,7 +271,7 @@ var distance;
 
 function PhoneQuery(callback,temp){
 	phone=[];
-  callback.query("select * phone from company where name ='"+temp+"';",function(err,rows,fields){
+  callback.query("select phone from company where name ='"+temp+"';",function(err,rows,fields){
     if (err) throw err;
     phone.push(rows.rows[0].phone);
   })

@@ -15,7 +15,7 @@ function MainQuery(temp){
   client.query("select * from cdetail where rcompany ='"+temp+"';",function(err,rows,fields){
     if (err) throw err;
     json=rows.rows
-		console.log(json.length);
+		console.log(json.length-1);
 		for(var i=0;i<json.length-1;i++){
       console.log(json[i].cname);
 		 	PhoneQuery(client,json[i].cname);
