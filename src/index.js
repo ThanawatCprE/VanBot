@@ -262,6 +262,7 @@ function MainQuery(temp){
 		for(var i=0;i<json.length-1;i++){
 		 	PhoneQuery(client,json[i].cname);
 		}
+		console.log(phone);
     client.end();
   })
 }
