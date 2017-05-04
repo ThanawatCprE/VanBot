@@ -97,7 +97,7 @@ function receivedMessage(event) {
         break;
       case 2 :
         if(messageText.match(/ไป/g)&&messageText!="ไป"){
-            Querydata(messageText);
+            MainQuery(messageText);
             sendQueueVan(senderID);
              state = 1;
         }
@@ -198,7 +198,7 @@ function genneral_template(data){
   for(var i=0;i<data.length;i++){
     temp +=`{
       "title":"🚎 `+data[i].cname+` `+data[i].rcompany+` 🚩",
-      "subtitle":"🏤 สถานที่จำหน่ายตั๋ว: หมอชิต2\\r\\n🕑 รอบ: 8.00น.\\r\\n💵 ราคา: `+data[i].cost+` บาท ",
+      "subtitle":"🏤 ระยะทาง: `+distance+` กม.\\r\\n🕑 รอบ: 8.00น.\\r\\n💵 ราคา: `+data[i].cost+` บาท ",
       "image_url":"`+data[i].cimage+`",
       "buttons":[
         {
@@ -238,7 +238,7 @@ function callSendAPI(messageData) {
   });
 }
 
-function Querydata(temp){
+function MainQuery(temp){
   var client = new pg.Client({
     user: "ifeygszgzemhgc",
     password: "c6500d57a0d859b425fbf6808052bcf2d0955da468aa90ff069c6c9c85cc536f",
@@ -248,20 +248,31 @@ function Querydata(temp){
     ssl: true
   });
   client.connect();
+	DistanceQuery(client,temp)
   client.query("select * from cdetail where rcompany ='"+temp+"';",function(err,rows,fields){
     if (err) throw err;
     json=rows.rows
 		for(var i=0;i<json.length;i++){
-			Queryphone(client,json[i].cname);
+			PhoneQuery(client,json[i].cname);
 		}
     client.end();
   })
 }
+
 var phone=[];
-function Queryphone(callback,temp){
+var distance;
+
+function PhoneQuery(callback,temp){
   callback.query("select phone from company where name ='"+temp+"';",function(err,rows,fields){
     if (err) throw err;
     phone.push(rows.rows[0].phone);
+  })
+}
+
+function DistanceQuery(callback,temp){
+  callback.query("select distance from route where routing ='"+temp+"';",function(err,rows,fields){
+    if (err) throw err;
+    distance=rows.rows[0].distance;
   })
 }
  // function callThreadSettingsAPI(data) { //Thread Reference API

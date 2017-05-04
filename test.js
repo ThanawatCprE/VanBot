@@ -17,13 +17,10 @@ function Querydata(temp){
     ssl: true
   });
   client.connect();
-  client.query("select * from cdetail where rcompany ='"+temp+"';",function(err,rows,fields){
+  client.query("select distance from route where routing ='"+temp+"';",function(err,rows,fields){
     if (err) throw err;
     json=rows.rows
-    console.log(json);
-		for(var i=0;i<json.length;i++){
-			Queryphone(client,json[i].cname);
-		}
+    console.log(json[0].distance);
     client.end();
   })
 }
