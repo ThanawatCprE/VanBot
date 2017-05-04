@@ -208,7 +208,7 @@ function genneral_template(data){
         },{
           "type":"phone_number",
           "title":"📞 ติดต่อ",
-          "payload":"`+phone+`"
+          "payload":"`+phone[i]+`"
         }
         ]
     }`
@@ -251,17 +251,17 @@ function Querydata(temp){
   client.query("select * from cdetail where rcompany ='"+temp+"';",function(err,rows,fields){
     if (err) throw err;
     json=rows.rows
-		// for(){
-		//
-		// }
+		for(var i=0;i<json.length;i++){
+			Queryphone(client,json[i].cname);
+		}
     client.end();
   })
 }
 var phone=[];
-function Queryphone(temp){
-  client.query("select phone from company where name ='"+temp+"';",function(err,rows,fields){
+function Queryphone(callback,temp){
+  callback.query("select phone from company where name ='"+temp+"';",function(err,rows,fields){
     if (err) throw err;
-    phone = rows.rows[0].phone
+    phone.push(rows.rows[0].phone);
   })
 }
  // function callThreadSettingsAPI(data) { //Thread Reference API

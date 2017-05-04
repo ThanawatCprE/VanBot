@@ -1,9 +1,10 @@
 var pg = require("pg");
 var phone=[];
-function Queryphone(temp){
-  client.query("select phone from company where name ='"+temp+"';",function(err,rows,fields){
+function Queryphone(callback,temp){
+  callback.query("select phone from company where name ='"+temp+"';",function(err,rows,fields){
     if (err) throw err;
     phone.push(rows.rows[0].phone);
+    console.log(phone[0]);
   })
 }
 function Querydata(temp){
@@ -19,11 +20,11 @@ function Querydata(temp){
   client.query("select * from cdetail where rcompany ='"+temp+"';",function(err,rows,fields){
     if (err) throw err;
     json=rows.rows
+    console.log(json);
 		for(var i=0;i<json.length;i++){
-			Queryphone(json[i].cname);
+			Queryphone(client,json[i].cname);
 		}
     client.end();
-    console.log(phone);
   })
 }
 Querydata("กรุงเทพไปสระบุรี");
