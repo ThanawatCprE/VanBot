@@ -97,6 +97,7 @@ function receivedMessage(event) {
         break;
       case 2 :
         if(messageText.match(/ไป/g)&&messageText!="ไป"){
+						Queryphone(data[i].cname);
             Querydata(messageText);
             sendQueueVan(senderID);
              state = 1;
@@ -196,7 +197,7 @@ function sendQueueVan(recipientId) {
 function genneral_template(data){
   var temp = '';
   for(var i=0;i<data.length;i++){
-		Queryphone(data[i].cname);
+
     temp +=`{
       "title":"🚎 `+data[i].cname+` `+data[i].rcompany+` 🚩",
       "subtitle":"🏤 สถานที่จำหน่ายตั๋ว: หมอชิต2\\r\\n🕑 รอบ: 8.00น.\\r\\n💵 ราคา: `+data[i].cost+` บาท ",
@@ -282,7 +283,7 @@ function Queryphone(temp){
     ssl: true
   });
   client.connect();
-  client.query("select phone from company where name ='"+temp+"';",function(err,rows,fields){
+  client.query("select phone from company where name ='ชนิกาทัวร์';",function(err,rows,fields){
     if (err) throw err;
     phone = rows.rows[0].phone
     client.end();
