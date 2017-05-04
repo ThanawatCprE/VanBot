@@ -209,7 +209,7 @@ function genneral_template(data){
         },{
           "type":"phone_number",
           "title":"📞 ติดต่อ",
-          "payload":"`+setTimeout(Queryphone(data[i].cname),200)+`"
+          "payload":"`+setTimeout(Queryphone(),200)+`"
         }
         ]
     }`
