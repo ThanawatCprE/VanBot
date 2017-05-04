@@ -259,11 +259,11 @@ function MainQuery(temp){
     if (err) throw err;
     json=rows.rows
 		console.log(json);
-		for(var i=0;i<json.length-1;i++){
+		for(var i=0;i<json.length;i++){
 		 	PhoneQuery(client,json[i].cname);
 		}
 		console.log(phone);
-    client.end();
+    // client.end();
   })
 }
 

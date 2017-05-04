@@ -16,11 +16,14 @@ function MainQuery(temp){
     if (err) throw err;
     json=rows.rows
 		console.log(json.length-1);
-		for(var i=0;i<json.length-1;i++){
+    // client.end();
+    for(var i=0;i<json.length;i++){
       console.log(json[i].cname);
 		 	PhoneQuery(client,json[i].cname);
-		}
-    client.end();
+      console.log(phone);
+    }
+
+
   })
 }
 
@@ -28,10 +31,12 @@ var phone=[];
 var distance;
 
 function PhoneQuery(callback,temp){
-	phone=[];
+  // callback.connect();
   callback.query("select phone from company where name ='"+temp+"';",function(err,rows,fields){
     if (err) throw err;
+    console.log(temp);
     phone.push(rows.rows[0].phone);
+    // client.end();
   })
 }
 
