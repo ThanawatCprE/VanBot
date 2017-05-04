@@ -88,7 +88,7 @@ function receivedMessage(event) {
     switch (state) {
       case 1 :
 				// json=[];
-				// phone=[];
+				 phone=[];
 				// distance=0;
         if(messageText == "ช่วยด้วย" ){
           sendTextMessage(senderID);
@@ -271,7 +271,6 @@ var phone=[];
 var distance;
 
 function PhoneQuery(callback,temp){
-	phone=[];
   callback.query("select phone from company where name ='"+temp+"';",function(err,rows,fields){
     if (err) throw err;
     phone.push(rows.rows[0].phone);
