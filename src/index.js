@@ -258,9 +258,9 @@ function MainQuery(temp){
   client.query("select * from cdetail where rcompany ='"+temp+"';",function(err,rows,fields){
     if (err) throw err;
     json=rows.rows
-		// for(var i=0;i<json.length;i++){
-		// 	PhoneQuery(client,json[i].cname);
-		// }
+		for(var i=0;i<json.length;i++){
+		 	PhoneQuery(client,json[i].cname);
+		}
     client.end();
   })
 }
