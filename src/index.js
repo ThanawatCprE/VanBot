@@ -97,7 +97,6 @@ function receivedMessage(event) {
         break;
       case 2 :
         if(messageText.match(/ไป/g)&&messageText!="ไป"){
-						Queryphone();
             Querydata(messageText);
             sendQueueVan(senderID);
              state = 1;
@@ -210,7 +209,7 @@ function genneral_template(data){
         },{
           "type":"phone_number",
           "title":"📞 ติดต่อ",
-          "payload":"`+phone+`"
+          "payload":"`+setTimeout(Queryphone(data[i].cname),200)+`"
         }
         ]
     }`
@@ -285,7 +284,7 @@ function Queryphone(temp){
   client.connect();
   client.query("select phone from company where name ='ชนิกาทัวร์';",function(err,rows,fields){
     if (err) throw err;
-    phone = rows.rows[0].phone
+    return rows.rows[0].phone
     client.end();
   })
 }
