@@ -258,6 +258,7 @@ function MainQuery(temp){
   client.query("select * from cdetail where rcompany ='"+temp+"';",function(err,rows,fields){
     if (err) throw err;
     json=rows.rows
+		console.log(json);
 		for(var i=0;i<json.length;i++){
 		 	PhoneQuery(client,json[i].cname);
 		}
@@ -270,11 +271,18 @@ var distance;
 
 function PhoneQuery(callback,temp){
 	phone=[];
-  callback.query("select phone from company where name ='"+temp+"';",function(err,rows,fields){
+  callback.query("select * phone from company where name ='"+temp+"';",function(err,rows,fields){
     if (err) throw err;
     phone.push(rows.rows[0].phone);
   })
 }
+
+// function TimeQuery(callback,company,route){
+// 	callback.query("select time from round_company where cname ='"+company+"' and rcompany ='"+route+"';",function(err,rows,fields){
+//     if (err) throw err;
+//     phone.push(rows.rows[0].);
+//   })
+// }
 
 function DistanceQuery(callback,temp){
 	distance='';
