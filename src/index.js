@@ -242,6 +242,7 @@ function callSendAPI(messageData) {
 }
 
 function MainQuery(temp){
+	json=[]
   var client = new pg.Client({
     user: "ifeygszgzemhgc",
     password: "c6500d57a0d859b425fbf6808052bcf2d0955da468aa90ff069c6c9c85cc536f",
@@ -266,6 +267,7 @@ var phone=[];
 var distance;
 
 function PhoneQuery(callback,temp){
+	phone=[];
   callback.query("select phone from company where name ='"+temp+"';",function(err,rows,fields){
     if (err) throw err;
     phone.push(rows.rows[0].phone);
@@ -273,6 +275,7 @@ function PhoneQuery(callback,temp){
 }
 
 function DistanceQuery(callback,temp){
+	distance='';
   callback.query("select distance from route where routing ='"+temp+"';",function(err,rows,fields){
     if (err) throw err;
     distance=rows.rows[0].distance;
