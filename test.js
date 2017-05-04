@@ -1,22 +1,32 @@
 var pg = require("pg");
-
-var client = new pg.Client({
-  user: "ifeygszgzemhgc",
-  password: "c6500d57a0d859b425fbf6808052bcf2d0955da468aa90ff069c6c9c85cc536f",
-  database: "djmi984ka9f4r",
-  port: 5432,
-  host: "ec2-23-23-111-171.compute-1.amazonaws.com",
-  ssl: true
-});
-var json='';
-client.connect();
-client.query("select * from company;",function(err,rows,fields){
-  if (err) throw err;
-  json=rows.rows
-  console.log(json[1]);
-  // client.end();
-})
-
+var phone=[];
+function Queryphone(temp){
+  client.query("select phone from company where name ='"+temp+"';",function(err,rows,fields){
+    if (err) throw err;
+    phone.push(rows.rows[0].phone);
+  })
+}
+function Querydata(temp){
+  var client = new pg.Client({
+    user: "ifeygszgzemhgc",
+    password: "c6500d57a0d859b425fbf6808052bcf2d0955da468aa90ff069c6c9c85cc536f",
+    database: "djmi984ka9f4r",
+    port: 5432,
+    host: "ec2-23-23-111-171.compute-1.amazonaws.com",
+    ssl: true
+  });
+  client.connect();
+  client.query("select * from cdetail where rcompany ='"+temp+"';",function(err,rows,fields){
+    if (err) throw err;
+    json=rows.rows
+		for(var i=0;i<json.length;i++){
+			Queryphone(json[i].cname);
+		}
+    client.end();
+    console.log(phone);
+  })
+}
+Querydata("กรุงเทพไปสระบุรี");
 // var query = client.query('select * from company;');
 //
 // query.on('row', function(row) {

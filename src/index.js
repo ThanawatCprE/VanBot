@@ -196,7 +196,6 @@ function sendQueueVan(recipientId) {
 function genneral_template(data){
   var temp = '';
   for(var i=0;i<data.length;i++){
-
     temp +=`{
       "title":"🚎 `+data[i].cname+` `+data[i].rcompany+` 🚩",
       "subtitle":"🏤 สถานที่จำหน่ายตั๋ว: หมอชิต2\\r\\n🕑 รอบ: 8.00น.\\r\\n💵 ราคา: `+data[i].cost+` บาท ",
@@ -209,7 +208,7 @@ function genneral_template(data){
         },{
           "type":"phone_number",
           "title":"📞 ติดต่อ",
-          "payload":"`+setTimeout(Queryphone(),200)+`"
+          "payload":"`+phone+`"
         }
         ]
     }`
@@ -252,40 +251,17 @@ function Querydata(temp){
   client.query("select * from cdetail where rcompany ='"+temp+"';",function(err,rows,fields){
     if (err) throw err;
     json=rows.rows
+		// for(){
+		//
+		// }
     client.end();
   })
 }
-function Querydata(temp){
-  var client = new pg.Client({
-    user: "ifeygszgzemhgc",
-    password: "c6500d57a0d859b425fbf6808052bcf2d0955da468aa90ff069c6c9c85cc536f",
-    database: "djmi984ka9f4r",
-    port: 5432,
-    host: "ec2-23-23-111-171.compute-1.amazonaws.com",
-    ssl: true
-  });
-  client.connect();
-  client.query("select * from cdetail where rcompany ='"+temp+"';",function(err,rows,fields){
-    if (err) throw err;
-    json=rows.rows
-    client.end();
-  })
-}
-var phone='';
+var phone=[];
 function Queryphone(temp){
-  var client = new pg.Client({
-    user: "ifeygszgzemhgc",
-    password: "c6500d57a0d859b425fbf6808052bcf2d0955da468aa90ff069c6c9c85cc536f",
-    database: "djmi984ka9f4r",
-    port: 5432,
-    host: "ec2-23-23-111-171.compute-1.amazonaws.com",
-    ssl: true
-  });
-  client.connect();
-  client.query("select phone from company where name ='ชนิกาทัวร์';",function(err,rows,fields){
+  client.query("select phone from company where name ='"+temp+"';",function(err,rows,fields){
     if (err) throw err;
-    return rows.rows[0].phone
-    client.end();
+    phone = rows.rows[0].phone
   })
 }
  // function callThreadSettingsAPI(data) { //Thread Reference API
