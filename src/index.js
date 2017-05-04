@@ -97,7 +97,7 @@ function receivedMessage(event) {
         break;
       case 2 :
         if(messageText.match(/ไป/g)&&messageText!="ไป"){
-						Queryphone(data[i].cname);
+						Queryphone();
             Querydata(messageText);
             sendQueueVan(senderID);
              state = 1;
