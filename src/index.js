@@ -176,22 +176,22 @@ function sendTextMessage(recipientId) {
 
 
 function sendQueueVan(recipientId) {
-  var genneral_message =`
-  {
-    "recipient": {
-      "id": `+recipientId+`
-    },
-    "message": {
-       "attachment":{
-         "type":"template",
-           "payload":{
-            "template_type":"generic",
-            "elements":[`+genneral_template(json)+`]
-           }
-        }
-      }
-  }`
 	setTimeout(function(){
+	  var genneral_message =`
+	  {
+	    "recipient": {
+	      "id": `+recipientId+`
+	    },
+	    "message": {
+	       "attachment":{
+	         "type":"template",
+	           "payload":{
+	            "template_type":"generic",
+	            "elements":[`+genneral_template(json)+`]
+	           }
+	        }
+	      }
+	  }`
 		var myObj = JSON.parse(genneral_message);
 		var messageData = myObj;
 	  callSendAPI(messageData);
