@@ -274,6 +274,7 @@ function PhoneQuery(callback,temp){
   callback.query("select phone from company where name ='"+temp+"';",function(err,rows,fields){
     if (err) throw err;
     phone.push(rows.rows[0].phone);
+		console.log(phone);
   })
 }
 
