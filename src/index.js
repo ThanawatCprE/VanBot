@@ -87,6 +87,9 @@ function receivedMessage(event) {
     // and send back the example. Otherwise, just echo the text we received.
     switch (state) {
       case 1 :
+				json=[];
+				phone=[];
+				distance=0;
         if(messageText == "ช่วยด้วย" ){
           sendTextMessage(senderID);
           state = 2;
