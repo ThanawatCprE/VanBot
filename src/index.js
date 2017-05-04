@@ -191,9 +191,11 @@ function sendQueueVan(recipientId) {
         }
       }
   }`
-  var myObj = JSON.parse(genneral_message);
-  var messageData = myObj;
-  callSendAPI(messageData);
+	setTimeout(function(){
+		var myObj = JSON.parse(genneral_message);
+		var messageData = myObj;
+	  callSendAPI(messageData);
+	},200);
 }
 // "title":"🚎 ชนิกาทัวร์ กรุงเทพไปนครสวรรค์ 🚩",
 function genneral_template(data){
