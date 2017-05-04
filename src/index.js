@@ -196,6 +196,7 @@ function sendQueueVan(recipientId) {
 function genneral_template(data){
   var temp = '';
   for(var i=0;i<data.length;i++){
+		Queryphone(data[i].cname);
     temp +=`{
       "title":"🚎 `+data[i].cname+` `+data[i].rcompany+` 🚩",
       "subtitle":"🏤 สถานที่จำหน่ายตั๋ว: หมอชิต2\\r\\n🕑 รอบ: 8.00น.\\r\\n💵 ราคา: `+data[i].cost+` บาท ",
@@ -208,7 +209,7 @@ function genneral_template(data){
         },{
           "type":"phone_number",
           "title":"📞 ติดต่อ",
-          "payload":"`+Queryphone(data[i].cname)+`"
+          "payload":"`+phone+`"
         }
         ]
     }`
@@ -270,6 +271,7 @@ function Querydata(temp){
     client.end();
   })
 }
+var phone='';
 function Queryphone(temp){
   var client = new pg.Client({
     user: "ifeygszgzemhgc",
@@ -282,7 +284,7 @@ function Queryphone(temp){
   client.connect();
   client.query("select phone from company where name ='"+temp+"';",function(err,rows,fields){
     if (err) throw err;
-    return rows.rows[0].phone
+    phone = rows.rows[0].phone
     client.end();
   })
 }
