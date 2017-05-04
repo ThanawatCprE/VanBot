@@ -10,8 +10,13 @@ var client = new pg.Client({
 });
 var json='';
 client.connect();
-var x=client.query("select phone from company where name = 'ชนิกาทัวร์' ;")
-console.log(x);
+client.query("select * from company;",function(err,rows,fields){
+  if (err) throw err;
+  json=rows.rows
+  console.log(json[1].name['ชนิกาทัวร์']);
+  // client.end();
+})
+
 // var query = client.query('select * from company;');
 //
 // query.on('row', function(row) {
