@@ -203,7 +203,7 @@ function genneral_template(data){
   for(var i=0;i<data.length;i++){
     temp +=`{
       "title":"🚎 `+data[i].cname+` `+data[i].rcompany+` 🚩",
-      "subtitle":"🏤 ระยะทาง: `+distance+` กม.\\r\\n🕑 รอบ: `+round[i]+`น.\\r\\n💵 ราคา: `+data[i].cost+` บาท ",
+      "subtitle":"🏤 ระยะทาง: `+distance+` กม.\\r\\n🕑 รอบ: `+round[i]+`\\r\\n💵 ราคา: `+data[i].cost+` บาท ",
       "image_url":"`+data[i].cimage+`",
       "buttons":[
         {
@@ -290,11 +290,11 @@ callback.query("select time from round_company where cname ='"+company+"' and rc
 		 	 for(var i=0;i<timeRound.length;i++){
 		 		 var subtract =  timeNow - timeRound[i].time
 		 		 if(subtract<0){
-		 			 round.push(timeRound[i].time);
+		 			 round.push(timeRound[i].time+'น.');
 		 			 break;
 		 		 	}
 		 		else if(subtract<=0.06 && subtract >= 0){
-		 			 round.push(timeRound[i].time);
+		 			 round.push(timeRound[i].time+'น.');
 		 			 break;
 		 		 	}
 		 	 	else if(subtract>0.06&&i==timeRound.length-1){
