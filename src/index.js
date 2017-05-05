@@ -89,6 +89,7 @@ function receivedMessage(event) {
       case 1 :
 				// json=[];
 				 phone=[];
+				 round=[];
 				// distance=0;
         if(messageText == "ช่วยด้วย" ){
           sendTextMessage(senderID);
@@ -273,7 +274,7 @@ var distance;
 var round=[];
 var date = new Date();
 var timeNow=(date.getHours()+7)+'.'+date.getMinutes()
-
+console.log('bdf'+timeNow);
 function PhoneQuery(callback,temp){
   callback.query("select phone from company where name ='"+temp+"';",function(err,rows,fields){
     if (err) throw err;
@@ -283,13 +284,14 @@ function PhoneQuery(callback,temp){
 }
 
 function TimeQuery(callback,company,route){
-	console.log('bajkfd'+timeNow);
+
 callback.query("select time from round_company where cname ='"+company+"' and rcompany ='"+route+"';",function(err,rows,fields){
  	 	if (err) throw err;
 	 	 var timeRound = rows.rows;
 		 if(timeRound.length!=0){
 		 	 for(var i=0;i<timeRound.length;i++){
 		 		 var subtract =  timeNow - timeRound[i].time
+				 console.log('subtract : '+subtract);
 		 		 if(subtract<0){
 		 			 round.push(timeRound[i].time+'น.');
 		 			 break;
