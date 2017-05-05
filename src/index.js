@@ -203,7 +203,7 @@ function genneral_template(data){
   for(var i=0;i<data.length;i++){
     temp +=`{
       "title":"🚎 `+data[i].cname+` `+data[i].rcompany+` 🚩",
-      "subtitle":"🏤 ระยะทาง: `+distance+` กม.\\r\\n🕑 รอบ: 8.00น.\\r\\n💵 ราคา: `+data[i].cost+` บาท ",
+      "subtitle":"🏤 ระยะทาง: `+distance+` กม.\\r\\n🕑 รอบ: `+round[i]+`น.\\r\\n💵 ราคา: `+data[i].cost+` บาท ",
       "image_url":"`+data[i].cimage+`",
       "buttons":[
         {
@@ -261,6 +261,7 @@ function MainQuery(temp){
 		console.log(json);
 		for(var i=0;i<json.length;i++){
 		 	PhoneQuery(client,json[i].cname);
+			TimeQuery(client,json[i].cname,temp);
 		}
 		console.log(phone);
     // client.end();
@@ -269,6 +270,9 @@ function MainQuery(temp){
 
 var phone=[];
 var distance;
+var round=[];
+var date = new Date();
+var timeNow=date.getHours()+'.'+date.getMinutes()
 
 function PhoneQuery(callback,temp){
   callback.query("select phone from company where name ='"+temp+"';",function(err,rows,fields){
@@ -278,12 +282,32 @@ function PhoneQuery(callback,temp){
   })
 }
 
-// function TimeQuery(callback,company,route){
-// 	callback.query("select time from round_company where cname ='"+company+"' and rcompany ='"+route+"';",function(err,rows,fields){
-//     if (err) throw err;
-//     phone.push(rows.rows[0].);
-//   })
-// }
+function TimeQuery(callback,company,route){
+client.query("select time from round_company where cname ='"+company+"' and rcompany ='"+route+"';",function(err,rows,fields){
+ 	 if (err) throw err;
+	 	 var timeRound = rows.rows
+		 if(timeRound.length!=0){
+		 	 for(var i=0;i<x.length;i++){
+		 		 var subtract =  timeNow - timeRound[i].time
+		 		 if(subtract<0){
+		 			 round.push(timeRound[i].time);
+		 			 break;
+		 		 	}
+		 		else if(subtract<=0.06 && subtract >= 0){
+		 			 round.push(timeRound[i].time);
+		 			 break;
+		 		 	}
+		 	 	else if(subtract>0.06&&i==x.length-1){
+		 			 round.push('เกินช่วงเวลา');
+		 			 break;
+		 	 		}
+		 	}
+		}
+		else{
+			round.push('เกินช่วงเวลา');
+		}
+  })
+ }
 
 function DistanceQuery(callback,temp){
 	distance='';

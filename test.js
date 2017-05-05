@@ -1,70 +1,7 @@
-var pg = require("pg");
-var json=[]
-function MainQuery(temp){
-	json=[]
-  var client = new pg.Client({
-    user: "ifeygszgzemhgc",
-    password: "c6500d57a0d859b425fbf6808052bcf2d0955da468aa90ff069c6c9c85cc536f",
-    database: "djmi984ka9f4r",
-    port: 5432,
-    host: "ec2-23-23-111-171.compute-1.amazonaws.com",
-    ssl: true
-  });
-  client.connect();
-	DistanceQuery(client,temp)
-  client.query("select * from cdetail where rcompany ='"+temp+"';",function(err,rows,fields){
-    if (err) throw err;
-    json=rows.rows
-		console.log(json.length-1);
-    // client.end();
-    for(var i=0;i<json.length;i++){
-      console.log(json[i].cname);
-		 	PhoneQuery(client,json[i].cname);
-      console.log(phone);
-    }
-
-
-  })
-}
-
-var phone=[];
-var distance;
-
-function PhoneQuery(callback,temp){
-  // callback.connect();
-  callback.query("select phone from company where name ='"+temp+"';",function(err,rows,fields){
-    if (err) throw err;
-    console.log(temp);
-    phone.push(rows.rows[0].phone);
-    // client.end();
-  })
-}
-
-// function TimeQuery(callback,company,route){
-// 	callback.query("select time from round_company where cname ='"+company+"' and rcompany ='"+route+"';",function(err,rows,fields){
-//     if (err) throw err;
-//     phone.push(rows.rows[0].);
-//   })
-// }
-
-function DistanceQuery(callback,temp){
-	distance='';
-  callback.query("select distance from route where routing ='"+temp+"';",function(err,rows,fields){
-    if (err) throw err;
-    distance=rows.rows[0].distance;
-  })
-}
-MainQuery("กรุงเทพไปสระบุรี")
-
-// var phone=[];
-// function Queryphone(callback,temp){
-//   callback.query("select phone from company where name ='"+temp+"';",function(err,rows,fields){
-//     if (err) throw err;
-//     phone.push(rows.rows[0].phone);
-//     console.log(phone[0]);
-//   })
-// }
-// function Querydata(company,route){
+ var pg = require("pg");
+// var json=[]
+// function MainQuery(temp){
+// 	json=[]
 //   var client = new pg.Client({
 //     user: "ifeygszgzemhgc",
 //     password: "c6500d57a0d859b425fbf6808052bcf2d0955da468aa90ff069c6c9c85cc536f",
@@ -74,31 +11,102 @@ MainQuery("กรุงเทพไปสระบุรี")
 //     ssl: true
 //   });
 //   client.connect();
-//   client.query("select time from round_company where cname ='"+company+"' and rcompany ='"+route+"';",function(err,rows,fields){
+// 	DistanceQuery(client,temp)
+//   client.query("select * from cdetail where rcompany ='"+temp+"';",function(err,rows,fields){
 //     if (err) throw err;
-//     var x = rows.rows
-//     var d = '9.25';
-//     for(var i=0;i<x.length;i++){
-//       var f =  d - x[i].time
-//       console.log(f);
-//       if(f<0){
-//         console.log(x[i].time);
-//         break;
-//       }
-//      else if(f<=0.06 && f >= 0){
-//         console.log(x[i].time);
-//         break;
-//       }
-//     else if(f>0.06&&i==x.length-1){
-//         console.log("not round");
-//         break;
+//     json=rows.rows
+// 		console.log(json.length-1);
+//     // client.end();
+//     for(var i=0;i<json.length;i++){
+//       console.log(json[i].cname);
+// 		 	PhoneQuery(client,json[i].cname);
+//       console.log(phone);
 //     }
-//     }
+//
+//
 //   })
 // }
-// Querydata("ชนิกาทัวร์","กรุงเทพไปสระบุรี");
-//  var date = new Date();
-//  var q=date.getHours()+'.'+date.getMinutes()
+//
+// var phone=[];
+// var distance;
+//
+// function PhoneQuery(callback,temp){
+//   // callback.connect();
+//   callback.query("select phone from company where name ='"+temp+"';",function(err,rows,fields){
+//     if (err) throw err;
+//     console.log(temp);
+//     phone.push(rows.rows[0].phone);
+//     // client.end();
+//   })
+// }
+//
+// // function TimeQuery(callback,company,route){
+// // 	callback.query("select time from round_company where cname ='"+company+"' and rcompany ='"+route+"';",function(err,rows,fields){
+// //     if (err) throw err;
+// //     phone.push(rows.rows[0].);
+// //   })
+// // }
+//
+// function DistanceQuery(callback,temp){
+// 	distance='';
+//   callback.query("select distance from route where routing ='"+temp+"';",function(err,rows,fields){
+//     if (err) throw err;
+//     distance=rows.rows[0].distance;
+//   })
+// }
+// MainQuery("กรุงเทพไปสระบุรี")
+
+// var phone=[];
+// function Queryphone(callback,temp){
+//   callback.query("select phone from company where name ='"+temp+"';",function(err,rows,fields){
+//     if (err) throw err;
+//     phone.push(rows.rows[0].phone);
+//     console.log(phone[0]);
+//   })
+// }
+ function Querydata(company,route){
+   var client = new pg.Client({
+     user: "ifeygszgzemhgc",
+     password: "c6500d57a0d859b425fbf6808052bcf2d0955da468aa90ff069c6c9c85cc536f",
+     database: "djmi984ka9f4r",
+     port: 5432,
+     host: "ec2-23-23-111-171.compute-1.amazonaws.com",
+     ssl: true
+   });
+   client.connect();
+   client.query("select time from round_company where cname ='"+company+"' and rcompany ='"+route+"';",function(err,rows,fields){
+     if (err) throw err;
+     var x = rows.rows
+     var w=[];
+     console.log(x.length);
+     var d = '9.25';
+     if(x.length!=0){
+       for(var i=0;i<x.length;i++){
+         var f =  d - x[i].time
+         console.log(f);
+         if(f<0){
+           console.log(x[i].time);
+           break;
+         }
+        else if(f<=0.06 && f >= 0){
+           console.log(x[i].time);
+           break;
+         }
+       else if(f>0.06&&i==x.length-1){
+           console.log("not round");
+           break;
+       }
+      }
+    }
+    else{
+      console.log("not round");
+    }
+   })
+ }
+ // select time from round_company where cname ='NJ' and rcompany ='กรุงเทพไปสระบุรี';
+ Querydata("NJ","กรุงเทพไปสระบุรี");
+  var date = new Date();
+  var q=date.getHours()+'.'+date.getMinutes()
  // console.log();
 // var query = client.query('select * from company;');
 //
