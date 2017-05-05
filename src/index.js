@@ -297,7 +297,7 @@ callback.query("select time from round_company where cname ='"+company+"' and rc
 		 			 round.push(timeRound[i].time);
 		 			 break;
 		 		 	}
-		 	 	else if(subtract>0.06&&i==x.length-1){
+		 	 	else if(subtract>0.06&&i==timeRound.length-1){
 		 			 round.push('เกินช่วงเวลา');
 		 			 break;
 		 	 		}
