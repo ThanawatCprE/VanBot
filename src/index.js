@@ -285,7 +285,7 @@ function PhoneQuery(callback,temp){
 function TimeQuery(callback,company,route){
 client.query("select time from round_company where cname ='"+company+"' and rcompany ='"+route+"';",function(err,rows,fields){
  	 if (err) throw err;
-	 	 var timeRound = rows.rows
+	 	 var timeRound = rows.rows;
 		 if(timeRound.length!=0){
 		 	 for(var i=0;i<x.length;i++){
 		 		 var subtract =  timeNow - timeRound[i].time
