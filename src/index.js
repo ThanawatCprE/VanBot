@@ -287,7 +287,7 @@ callback.query("select time from round_company where cname ='"+company+"' and rc
  	 	if (err) throw err;
 	 	 var timeRound = rows.rows;
 		 if(timeRound.length!=0){
-		 	 for(var i=0;i<x.length;i++){
+		 	 for(var i=0;i<timeRound.length;i++){
 		 		 var subtract =  timeNow - timeRound[i].time
 		 		 if(subtract<0){
 		 			 round.push(timeRound[i].time);
