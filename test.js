@@ -78,11 +78,11 @@
      if (err) throw err;
      var x = rows.rows
      var w=[];
-     console.log(x.length);
+     console.log(q);
      var d = '9.25';
      if(x.length!=0){
        for(var i=0;i<x.length;i++){
-         var f =  q - x[i].time
+         var f =  q  - x[i].time
          console.log(f);
          if(f<0){
            console.log(x[i].time);
@@ -106,7 +106,7 @@
  // select time from round_company where cname ='NJ' and rcompany ='กรุงเทพไปสระบุรี';
  Querydata("ชนิกาทัวร์","กรุงเทพไปสระบุรี");
   var date = new Date();
-  var q=date.getHours()+'.'+date.getMinutes()
+  var q=(date.getHours()+7)+'.'+date.getMinutes()
  // console.log();
 // var query = client.query('select * from company;');
 //

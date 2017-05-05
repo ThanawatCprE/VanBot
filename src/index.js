@@ -272,7 +272,7 @@ var phone=[];
 var distance;
 var round=[];
 var date = new Date();
-var timeNow=date.getHours()+'.'+date.getMinutes()
+var timeNow=(date.getHours()+7)+'.'+date.getMinutes()
 
 function PhoneQuery(callback,temp){
   callback.query("select phone from company where name ='"+temp+"';",function(err,rows,fields){
