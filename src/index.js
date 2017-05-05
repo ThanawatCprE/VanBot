@@ -283,6 +283,7 @@ function PhoneQuery(callback,temp){
 }
 
 function TimeQuery(callback,company,route){
+	console.log('bajkfd'+timeNow);
 callback.query("select time from round_company where cname ='"+company+"' and rcompany ='"+route+"';",function(err,rows,fields){
  	 	if (err) throw err;
 	 	 var timeRound = rows.rows;

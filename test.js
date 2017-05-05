@@ -82,7 +82,7 @@
      var d = '9.25';
      if(x.length!=0){
        for(var i=0;i<x.length;i++){
-         var f =  d - x[i].time
+         var f =  q - x[i].time
          console.log(f);
          if(f<0){
            console.log(x[i].time);
@@ -104,7 +104,7 @@
    })
  }
  // select time from round_company where cname ='NJ' and rcompany ='กรุงเทพไปสระบุรี';
- Querydata("NJ","กรุงเทพไปสระบุรี");
+ Querydata("ชนิกาทัวร์","กรุงเทพไปสระบุรี");
   var date = new Date();
   var q=date.getHours()+'.'+date.getMinutes()
  // console.log();
