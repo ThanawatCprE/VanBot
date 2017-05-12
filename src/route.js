@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router()
 var session = require('express-session');
 var data;
+// var x;
 var data1 = {
   userImg :"https://www.atomix.com.au/media/2015/06/atomix_user31.png",
   urlimg : "http://kora11.com/wp-content/uploads/2014/03/dsaf.gif",
@@ -21,6 +22,9 @@ var data2 = {
   time : "",
   distance : "",
   phone : ""
+}
+function yud(x){
+  console.log(x);
 }
 router.get('/',function(req,res){
   data = data1;

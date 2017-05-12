@@ -79,7 +79,7 @@ var user='';
   //  }
  });
 //
- app.use('/profile', auth, route);
+ app.use('/profile', auth,route);
 
  app.get('/logout', function (req, res) {
    req.session.destroy();
