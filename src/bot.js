@@ -41,7 +41,7 @@ module.exports = function(app,pg,token,access,bodyPaser,request){
       res.sendStatus(200);
     }
   });
-}
+
 var state = 1;
 var json;
 function receivedMessage(event) {
@@ -294,4 +294,5 @@ function DistanceQuery(callback,temp){
     if (err) throw err;
     distance=rows.rows[0].distance;
   })
+}
 }
