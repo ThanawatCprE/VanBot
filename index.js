@@ -24,6 +24,16 @@ app.use('/css',express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 app.use('/css',express.static(__dirname + '/css'));
 app.use('/js',express.static(__dirname + '/node_modules/jquery/dist'));
 
+var client = new pg.Client({
+  user: "ifeygszgzemhgc",
+  password: "c6500d57a0d859b425fbf6808052bcf2d0955da468aa90ff069c6c9c85cc536f",
+  database: "djmi984ka9f4r",
+  port: 5432,
+  host: "ec2-23-23-111-171.compute-1.amazonaws.com",
+  ssl: true
+});
+client.connect();
+
 app.get('/', function (req, res) {
      res.render('index');
 });
@@ -64,38 +74,9 @@ var user='';
    req.session.destroy();
    res.redirect('/');
  });
-var test ={
-	get_started:{
-    "payload":"GET_STARTED_PAYLOAD"
-  }
-}
-bot(app,pg,token,access,bodyPaser,request);
- // function callThreadSettingsAPI(data) { //Thread Reference API
- // request({
- // uri: 'https://graph.facebook.com/v2.6/me/thread_settings',
- // qs: { access_token: access },
- // method: 'POST',
- // json: data
- //
- // }, function (error, response, body) {
- // if (!error && response.statusCode == 400) {
- //   console.log("Thread Settings successfully changed!");
- // } else {
- //   console.error("Failed calling Thread Reference API", response.statusCode, response.statusMessage, body.error);
- // }
- // });
- // }
- //
- // function createGetStarted() {
- // var data = {
- //   "setting_type":"greeting",
- //     "greeting":{
- //       "text":"สวัสดี {{user_full_name}} \r\nกดที่ปุ่ม 'เริ่มต้นใช้งาน' เพื่อเปิดใช้งาน VanBOT 🚎"
- //     }
- // };
- // callThreadSettingsAPI(data);
- // }
+
+bot(app,client,token,access,bodyPaser,request);
+
 app.listen(app.get('port'),function(){
-  // createGetStarted();
 	console.log('runing on port',app.get('port'))
 })

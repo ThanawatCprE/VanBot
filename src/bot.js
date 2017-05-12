@@ -1,4 +1,4 @@
-module.exports = function(app,pg,token,access,bodyPaser,request){
+module.exports = function(app,client,token,access,bodyPaser,request){
   app.get('/webhook/', function(req, res ){
   	if(req.query['hub.verify_token']=== token){
   		res.send(req.query['hub.challenge'])
@@ -72,7 +72,7 @@ module.exports = function(app,pg,token,access,bodyPaser,request){
           break;
         case 2 :
           if(messageText.match(/ไป/g)&&messageText!="ไป"){
-              MainQuery(messageText);
+              MainQuery(client,messageText);
               sendQueueVan(senderID);
                state = 1;
           }
@@ -215,17 +215,8 @@ module.exports = function(app,pg,token,access,bodyPaser,request){
     });
   }
 
-  function MainQuery(temp){
+  function MainQuery(client,temp){
   	json=[]
-    var client = new pg.Client({
-      user: "ifeygszgzemhgc",
-      password: "c6500d57a0d859b425fbf6808052bcf2d0955da468aa90ff069c6c9c85cc536f",
-      database: "djmi984ka9f4r",
-      port: 5432,
-      host: "ec2-23-23-111-171.compute-1.amazonaws.com",
-      ssl: true
-    });
-    client.connect();
   	DistanceQuery(client,temp)
     client.query("select * from cdetail where rcompany ='"+temp+"';",function(err,rows,fields){
       if (err) throw err;
