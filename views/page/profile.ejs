@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% include ../component/header.ejs %>
+</head>
+<body>
+
+<% include ../component/nav-top.ejs %>
+
+<div class="container">
+	<div class="row">
+		<!-- <h4>So I've worked on a new project and came up with this UI. Here you can use it. :) Follow me on twitter: <a href="https://twitter.com/AlexMahrt/">@AlexMahrt</a></h4> -->
+	</div>
+    <hr>
+        <div class="row row-margin-bottom">
+            <div class="col-md-5 no-padding lib-item" data-category="view">
+                <div class="lib-panel">
+                    <div class="row box-shadow">
+                        <div class="col-md-6">
+                            <img class="lib-img-show" src="https://scontent.fbkk2-4.fna.fbcdn.net/v/t1.0-9/11951297_1629034227380198_8144052658843524960_n.jpg?oh=ef609756794f71845f22c12852533c64&oe=597FE112">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="lib-row lib-header">
+                                <%= data.company %>
+                            <div class="lib-header-seperator"></div>
+                            </div>
+                            <div class="lib-row lib-desc">
+                                เส้นทาง : <%= data.route %>
+                                <br>
+                                ระยะทาง : <%= data.distance %> กม.
+                                <br>
+                                เวลา : <%= data.time %> น.
+                                <br>
+                                ราคา : <%= data.cost %> บาท
+                                <br>
+                                เบอร์โทรศัพท์ : <%= data.phone %>
+                            </div>
+                            <div class="lib-row lib-header">
+                              <button type="button" class="btn btn-success" onclick="window.location.href='/profile/edit'">Edit</button>
+                              <button type="button" class="btn btn-danger">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5 no-padding lib-item" data-category="view">
+                <div class="lib-panel">
+                    <div class="row box-shadow">
+                        <div class="col-md-6">
+                            <img class="lib-img-show" src="http://www.clipartbest.com/cliparts/4T9/zBp/4T9zBpp8c.png">
+                        </div>
+                        <div class="lib-row lib-desc ">
+                          <br></br><br></br><br>
+                          <button type="button" class="btn btn-success btn-lg center-block " onclick="window.location.href='/profile/add'">Add</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+</div>
+
+</body>
+</html>

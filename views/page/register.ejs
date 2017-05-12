@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <% include ../component/header.ejs %>
+</head>
+<body>
+
+<div class="container">
+   <form action="/save" method="get">
+     <!-- <div id="img_container "> -->
+     <div class="form-group">
+       <image  id="demo" class="img-rounded center-block" name="picture" width="250" height="250" src="https://www.atomix.com.au/media/2015/06/atomix_user31.png">
+       <button type="button" class="center-block btn" id="myBtn"> Edit image </button>
+       <div id="myModal" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <label>URL image :</label>
+            <input  class = "form-control" name="image" id = "image" placeholder = "Enter URL image">
+            <button type="button" class="center-block btn" id="save">Save</button>
+          </div>
+        </div>
+     </div>
+    <!-- </div> -->
+     <div class="form-group">
+       <label for="CompanyName">Username :</label>
+       <input class="form-control" name="CN" id="company" placeholder = "Enter Username" >
+     </div>
+     <div class="form-group">
+       <label for="pwd">Password :</label>
+       <input type="password" class="form-control" name="password" id="pwd" placeholder = "Enter Password" >
+     </div>
+     <div class="form-group">
+       <label for="pwd">Re-Password</label>
+       <input type="password" class="form-control" name="password" id="pwd" placeholder = "Enter Re-Password">
+     </div>
+     <div class="form-group">
+       <label for="CompanyName">ชื่อบริษัท :</label>
+       <input class="form-control" name="CN" id="company" placeholder = "Enter your Company" >
+     </div>
+     <div class="form-group">
+       <label for="pwd">เบอร์โทรศัพท์ :</label>
+       <input type="password" class="form-control" name="password" id="pwd" placeholder = "Enter your Phone Number">
+     </div>
+     <button type="submit" class="btn btn-primary btn-lg">Register</button>
+     <button type="button" class="btn btn-danger btn-lg" onclick="window.location.href='/'">Cancle</button>
+   </form>
+</div>
+<script>
+  var modal = document.getElementById('myModal');
+  var btn = document.getElementById("myBtn");
+  var save = document.getElementById("save");
+
+  var span = document.getElementsByClassName("close")[0];
+  btn.onclick = function() {
+      modal.style.display = "block";
+  }
+  span.onclick = function() {
+      modal.style.display = "none";
+  }
+  save.onclick = function() {
+      var img = document.getElementById("image").value;
+      document.getElementById("demo").src = img;
+      modal.style.display = "none";
+  }
+  window.onclick = function(event) {
+      if (event.target == modal) {
+          modal.style.display = "none";
+      }
+  }
+
+</script>
+</body>
+</html>

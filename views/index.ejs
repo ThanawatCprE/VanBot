@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ./component/header.ejs %>
+
+</head>
+<body>
+<div class="container">
+  <h2>VanBot</h2>
+  <form action="/login" method="get">
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" name="email" id="email" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" name="password" id="pwd" placeholder="Enter password">
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox"> Remember me</label>
+    </div>
+    <button type="submit" class="btn btn-primary btn-lg">Login</button>
+    <button type="button" class="btn btn-success btn-lg"  onclick="window.location.href='/register'">Registor</button>
+  </form>
+</div>
+</body>
+</html>
