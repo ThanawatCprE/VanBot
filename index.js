@@ -57,15 +57,26 @@ app.get('/register', function (req, res) {
 //
 var user='';
  app.get('/login', function (req, res) {
-   console.log(req.query.email);
-   user=req.query.email
-   if (!req.query.email || !req.query.password) {
-     res.send('login failed');
-   } else if(req.query.email === "amy@gmail.com" || req.query.password === "1234") {
-     req.session.email = req.query.email;
-     req.session.admin = true;
-     res.redirect('/profile');
-   }
+   client.query("select * from vanuser where id ='"+req.query.email+"' and pass = '"+req.query.password+"';",function(err,rows,fields){
+     if (err || rows.rows == ""){
+       res.send('login failed');
+     }
+     else{
+       user=req.query.email;
+       req.session.email = req.query.email;
+       req.session.admin = true;
+       res.redirect('/profile');
+     }
+   })
+  //  console.log(req.query.email);
+  //  user=req.query.email
+  //  if (!req.query.email || !req.query.password) {
+  //    res.send('login failed');
+  //  } else if(req.query.email === "amy@gmail.com" || req.query.password === "1234") {
+  //    req.session.email = req.query.email;
+  //    req.session.admin = true;
+  //    res.redirect('/profile');
+  //  }
  });
 //
  app.use('/profile', auth, route);
