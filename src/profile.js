@@ -1,6 +1,4 @@
-var express = require('express');
-var router = express.Router()
-var session = require('express-session');
+
 var data;
 // var x;
 var data1 = {
@@ -26,16 +24,19 @@ var data2 = {
 function yud(x){
   console.log(x);
 }
-router.get('/',function(req,res){
-  data = data1;
-  res.render('page/profile',{user:req.session.email,data});
-})
-router.get('/edit',function(req,res){
-  data = data1;
-  res.render('page/details',{user:req.session.email,data});
-})
-router.get('/add',function(req,res){
-  data = data2 ;
-  res.render('page/details',{user:req.session.email,data});
-})
-module.exports = router
+module.exports = function(app,express,session,auth){
+  var router = express.Router();
+  router.get('/',function(req,res){
+    data = data1;
+    res.render('page/profile',{user:req.session.email,data});
+  })
+  router.get('/edit',function(req,res){
+    data = data1;
+    res.render('page/details',{user:req.session.email,data});
+  })
+  router.get('/add',function(req,res){
+    data = data2 ;
+    res.render('page/details',{user:req.session.email,data});
+  })
+  app.use('/profile',auth,router)
+}

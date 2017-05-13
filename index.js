@@ -1,7 +1,6 @@
 const express =require('express');
 const bodyPaser = require('body-parser');
-const route = require('./src/route');
-const bot = require('./src/bot');
+const profile = require('./src/profile');
 const request = require('request');
 const session = require('express-session');
 const app =express();
@@ -36,9 +35,6 @@ client.connect();
 
 app.get('/', function (req, res) {
      res.render('index');
-});
-app.get('/register', function (req, res) {
-     res.render('page/register');
 });
 //
  app.use(session({
@@ -79,14 +75,16 @@ var user='';
   //  }
  });
 //
- app.use('/profile', auth,route);
+require('./src/register')(app,express,client);
+require('./src/profile')(app,express,session,auth);
+// app.use('/profile', auth,profile);
 
  app.get('/logout', function (req, res) {
    req.session.destroy();
    res.redirect('/');
  });
 
-bot(app,client,token,access,bodyPaser,request);
+require('./src/bot')(app,client,token,access,bodyPaser,request);
 
 app.listen(app.get('port'),function(){
 	console.log('runing on port',app.get('port'))
