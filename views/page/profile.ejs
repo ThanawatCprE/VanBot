@@ -17,24 +17,28 @@
                 <div class="lib-panel">
                     <div class="row box-shadow">
                         <div class="col-md-6">
-                            <img class="lib-img-show" src="https://scontent.fbkk2-4.fna.fbcdn.net/v/t1.0-9/11951297_1629034227380198_8144052658843524960_n.jpg?oh=ef609756794f71845f22c12852533c64&oe=597FE112">
+                            <img class="lib-img-show" src=<%= shemaDetail.urlimg%> style="width:25rem;height:25rem;" >
                         </div>
                         <div class="col-md-6">
                             <div class="lib-row lib-header">
-                                <%= data.company %>
+                                <%= shemaUser.company %>
                             <div class="lib-header-seperator"></div>
                             </div>
                             <div class="lib-row lib-desc">
-                                เส้นทาง : <%= data.route %>
+                                เส้นทาง : <%= shemaDetail.route %>
                                 <br>
-                                ระยะทาง : <%= data.distance %> กม.
+                                ระยะทาง : <%= shemaDetail.distance %> กม.
                                 <br>
-                                เวลา : <%= data.time %> น.
+                                เวลา : <%= shemaDetail.time %> น.
                                 <br>
-                                ราคา : <%= data.cost %> บาท
+                                ราคา : <%= shemaDetail.cost %> บาท
                                 <br>
-                                เบอร์โทรศัพท์ : <%= data.phone %>
+                                เบอร์โทรศัพท์ : <%= shemaDetail.phone %>
+                                <br>
+                                <br>
+                                <button type="button" class="btn btn-primary btn-xs" onclick=window.location.href='<%= shemaDetail.gps%>' >GPS</button>
                             </div>
+
                             <div class="lib-row lib-header">
                               <button type="button" class="btn btn-success" onclick="window.location.href='/profile/edit'">Edit</button>
                               <button type="button" class="btn btn-danger">Delete</button>

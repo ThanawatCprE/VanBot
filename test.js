@@ -104,9 +104,10 @@
    })
  }
  // select time from round_company where cname ='NJ' and rcompany ='กรุงเทพไปสระบุรี';
- insert into round_company values('ทรัพทวี','กรุงเทพไปสระบุรี','23.00');
+ insert into round_company values('gooook','กรุงเทพไปสระบุรี','23.00');
  insert into company values('ทรัพทวี','0981123456');
- insert into cdetail values('ทรัพทวี','กรุงเทพไปสระบุรี',150,'http://true4u.truelife.com//uploadedfiles/true4unews//gFZPQU.jpg','https://www.google.co.th/maps/place/%E0%B8%AA%E0%B8%96%E0%B8%B2%E0%B8%99%E0%B8%B5%E0%B8%AB%E0%B8%A1%E0%B8%AD%E0%B8%8A%E0%B8%B4%E0%B8%95/@13.8024444,100.5515614,17z/data=!3m1!4b1!4m5!3m4!1s0x30e29c40744d242d:0xea6ffad652c3aefc!8m2!3d13.8024392!4d100.5537501?hl=th&authuser=0');
+ insert into cdetail values('gooook','กรุงเทพไปสระบุรี',150,'http://true4u.truelife.com//uploadedfiles/true4unews//gFZPQU.jpg','https://www.google.co.th/maps/place/%E0%B8%AA%E0%B8%96%E0%B8%B2%E0%B8%99%E0%B8%B5%E0%B8%AB%E0%B8%A1%E0%B8%AD%E0%B8%8A%E0%B8%B4%E0%B8%95/@13.8024444,100.5515614,17z/data=!3m1!4b1!4m5!3m4!1s0x30e29c40744d242d:0xea6ffad652c3aefc!8m2!3d13.8024392!4d100.5537501?hl=th&authuser=0');
+ select * from cdetail where cname ='gooook';
  Querydata("ชนิกาทัวร์","กรุงเทพไปสระบุรี");
   var date = new Date();
   var q=(date.getHours()+7)+'.'+date.getMinutes()

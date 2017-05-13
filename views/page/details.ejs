@@ -12,7 +12,7 @@
    <form action="/save" method="get">
      <!-- <div id="img_container "> -->
      <div class="form-group">
-       <image  id="demo" class="img-rounded center-block" name="picture" width="250" height="250" src= <%= data.urlimg %>>
+       <image  id="demo" class="img-rounded center-block" name="picture" width="250" height="250" src= <%= shemaDetail.urlimg %>>
        <button type="button" class="center-block btn" id="myBtn"> Edit image </button>
        <div id="myModal" class="modal">
           <div class="modal-content">
@@ -27,15 +27,15 @@
 
      <div class="form-group">
        <label>เส้นทาง :</label>
-       <input type="text" class="form-control" name="route"  placeholder = <%= data.distance %> >
+       <input type="text" class="form-control" name="route"  placeholder = <%= shemaDetail.distance %> >
      </div>
      <div class="form-group">
        <label>ระยะทาง :</label>
-       <input type="text" class="form-control" name="distance"  placeholder = <%= data.distance %> >
+       <input type="text" class="form-control" name="distance"  placeholder = <%= shemaDetail.distance %> >
      </div>
      <div class="form-group">
        <label>ราคา (บาท) :</label>
-       <input type="text" class="form-control" name="cost"  placeholder = <%= data.cost %> >
+       <input type="text" class="form-control" name="cost"  placeholder = <%= shemaDetail.cost %> >
      </div>
      <div class="form-group">
        <label >ตำแหน่ง GPS :</label>

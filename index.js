@@ -76,7 +76,7 @@ var user='';
  });
 //
 require('./src/register')(app,express,client);
-require('./src/profile')(app,express,session,auth);
+require('./src/profile')(app,express,session,auth,client);
 // app.use('/profile', auth,profile);
 
  app.get('/logout', function (req, res) {
