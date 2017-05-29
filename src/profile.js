@@ -65,8 +65,8 @@ module.exports = function(app,express,session,auth,client){
 
         client.query("select * from cdetail where cname ='"+company.rows[0].name+"';",function(errs,cdetails){
           if(errs || cdetails.rows == ""){
-            shemaDetail={}
-            res.render('page/profile',{shemaUser,shemaDetail});
+            total=[]
+            res.render('page/profile',{shemaUser,total});
           }
           else{
             cdetail = cdetails.rows;
@@ -76,7 +76,7 @@ module.exports = function(app,express,session,auth,client){
                 a(client,i);
                 b(client,i,res);
               }
-          }
+          }//
           });
         shemaUser.company = company.rows[0].name;
       });
@@ -86,9 +86,47 @@ module.exports = function(app,express,session,auth,client){
     var shemadata=total[req.query.key];
     res.render('page/details',{shemaUser,shemadata});
   })
+   router.get('/delete',function(req,res){
+    console.log(req.query.key);
+    var shemadata=total[req.query.key];
+          client.query("DELETE FROM cdetail WHERE rcompany ='"+shemadata.route+"';",function(err,company){
+        if(err){
+          console.log("delete cdetail err");
+          console.log(err);
+          
+        }
+        });
+         client.query("DELETE FROM route WHERE routing ='"+shemadata.route+"';",function(err,company){
+        if(err) {
+          console.log("delete route err");
+          console.log(err);
+        }
+        });
+        console.log("DELETE FROM round_company WHERE rcompany ='"+shemadata.route+"' and cname ='"+shemaUser.company+"';");
+         client.query("DELETE FROM round_company WHERE rcompany ='"+shemadata.route+"' and cname ='"+shemaUser.company+"';",function(err,company){
+        if(err) {
+          console.log("delete round_company err");
+          console.log(err);
+        }
+        });
+    res.redirect('/profile');    
+   // res.render('page/details',{shemaUser,shemadata});
+  })
   router.get('/edit/save',function(req,res){
     console.log(req.query);
+    var temp = "update cdetail set cost ="+req.query.cost+" , cimage ="+"'"+req.query.image+"'"+",clocation ='"+req.query.GPS+"' where rcompany ='"+req.query.route+"';"
+   
+    client.query(temp,function(err,company){
+        if(err) throw err;
+      });
+      temp = "update route set distance ="+req.query.distance+" where routing ='"+req.query.route+"';"
+           console.log(temp);
+
+       client.query(temp,function(err,company){
+        if(err) throw err;
+      });
+   res.redirect('/profile');
   })
   require('./add')(app,express,session,auth,client,shemaUser);
-  app.use('/profile',auth,router)
+  app.use('/profile',router)
 }

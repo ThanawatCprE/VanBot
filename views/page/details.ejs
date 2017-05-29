@@ -18,7 +18,7 @@
           <div class="modal-content">
             <span class="close">&times;</span>
             <label>URL image :</label>
-            <input  class = "form-control" name="image" id = "image" placeholder = "Enter URL image">
+            <input  class = "form-control" name="image" id = "image" value=<%= shemadata.urlimg %>>
             <button type="button" class="center-block btn" id="save">Save</button>
           </div>
         </div>
@@ -27,19 +27,19 @@
     <input type="hidden" name="user" value=<%= shemaUser.company%>>
      <div class="form-group">
        <label>เส้นทาง :</label>
-       <input type="text" class="form-control" name="route"  placeholder = <%= shemadata.route %> >
+       <input type="text" class="form-control" name="route"  value = <%= shemadata.route %> >
      </div>
      <div class="form-group">
        <label>ระยะทาง :</label>
-       <input type="text" class="form-control" name="distance"  placeholder = <%= shemadata.distance %> >
+       <input type="text" class="form-control" name="distance"  value = <%= shemadata.distance %> >
      </div>
      <div class="form-group">
        <label>ราคา (บาท) :</label>
-       <input type="text" class="form-control" name="cost"  placeholder = <%= shemadata.cost %> >
+       <input type="text" class="form-control" name="cost"  value = <%= shemadata.cost %> >
      </div>
      <div class="form-group">
        <label >ตำแหน่ง GPS :</label>
-       <input type="text" class="form-control" name="GPS"  width="250px" placeholder=<%= shemadata.gps %>>
+       <input type="text" class="form-control" name="GPS"  width="250px" value=<%= shemadata.gps %>>
      </div>
      <label>ช่วงเวลาทำการ</label>
      <br></br>
@@ -90,6 +90,7 @@
           modal.style.display = "none";
       }
   }
+
   function changeaction() {
   document.getElementById('data').action = window.location.pathname+"/save"
 }
