@@ -11,49 +11,53 @@
 	<div class="row">
 		<!-- <h4>So I've worked on a new project and came up with this UI. Here you can use it. :) Follow me on twitter: <a href="https://twitter.com/AlexMahrt/">@AlexMahrt</a></h4> -->
 	</div>
-    <hr>
-        <div class="row row-margin-bottom">
+  <div class="row row-margin-bottom">
+    <% for(var i=0; i<total.length; i++) {%>
+
+
             <div class="col-md-5 no-padding lib-item" data-category="view">
                 <div class="lib-panel">
                     <div class="row box-shadow">
                         <div class="col-md-6">
-                            <img class="lib-img-show" src=<%= shemaDetail.urlimg%> style="width:25rem;height:25rem;" >
+                            <img class="lib-img-show" src=<%= total[i].urlimg%> style="width:25rem;height:25rem;" >
                         </div>
                         <div class="col-md-6">
                             <div class="lib-row lib-header">
-                                <%= shemaUser.company %>
+                                <%= total[i].route %>
                             <div class="lib-header-seperator"></div>
                             </div>
                             <div class="lib-row lib-desc">
-                                เส้นทาง : <%= shemaDetail.route %>
+                                ระยะทาง : <%= total[i].distance %> กม.
                                 <br>
-                                ระยะทาง : <%= shemaDetail.distance %> กม.
+                                เวลา : <%= total[i].time %> น.
                                 <br>
-                                เวลา : <%= shemaDetail.time %> น.
+                                ราคา : <%= total[i].cost %> บาท
                                 <br>
-                                ราคา : <%= shemaDetail.cost %> บาท
-                                <br>
-                                เบอร์โทรศัพท์ : <%= shemaDetail.phone %>
+                                เบอร์โทรศัพท์ : <%= total[i].phone %>
                                 <br>
                                 <br>
-                                <button type="button" class="btn btn-primary btn-xs" onclick=window.location.href='<%= shemaDetail.gps%>' >GPS</button>
+                                <button type="button" class="btn btn-primary btn-xs" onclick=window.location.href='<%= total[i].gps%>' >GPS</button>
                             </div>
 
                             <div class="lib-row lib-header">
-                              <button type="button" class="btn btn-success" onclick="window.location.href='/profile/edit'">Edit</button>
+                              <button type="button" class="btn btn-success" onclick=window.location.href='/profile/edit?key=<%=i%>'>Edit</button>
                               <button type="button" class="btn btn-danger">Delete</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-1"></div>
-            <div class="col-md-1"></div>
+            <% if(i%2 == 0) {%>
+              <div class="col-md-1"></div>
+              <div class="col-md-1"></div>
+            <% } %>
+
+        <% } %>
             <div class="col-md-5 no-padding lib-item" data-category="view">
                 <div class="lib-panel">
                     <div class="row box-shadow">
                         <div class="col-md-6">
-                            <img class="lib-img-show" src="http://www.clipartbest.com/cliparts/4T9/zBp/4T9zBpp8c.png">
+                            <img class="lib-img-show" src="http://www.clipartbest.com/cliparts/4T9/zBp/4T9zBpp8c.png" style="width:25rem;height:25rem;">
                         </div>
                         <div class="lib-row lib-desc ">
                           <br></br><br></br><br>

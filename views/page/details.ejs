@@ -9,10 +9,10 @@
   <% include ../component/nav-top.ejs %>
 
 <div class="container">
-   <form action="/save" method="get">
+   <form onSubmit="return changeaction();" method="get" id="data">
      <!-- <div id="img_container "> -->
      <div class="form-group">
-       <image  id="demo" class="img-rounded center-block" name="picture" width="250" height="250" src= <%= shemaDetail.urlimg %>>
+       <image  id="demo" class="img-rounded center-block" name="picture" width="250" height="250" src= <%= shemadata.urlimg %>>
        <button type="button" class="center-block btn" id="myBtn"> Edit image </button>
        <div id="myModal" class="modal">
           <div class="modal-content">
@@ -24,22 +24,22 @@
         </div>
      </div>
     <!-- </div> -->
-
+    <input type="hidden" name="user" value=<%= shemaUser.company%>>
      <div class="form-group">
        <label>เส้นทาง :</label>
-       <input type="text" class="form-control" name="route"  placeholder = <%= shemaDetail.distance %> >
+       <input type="text" class="form-control" name="route"  placeholder = <%= shemadata.route %> >
      </div>
      <div class="form-group">
        <label>ระยะทาง :</label>
-       <input type="text" class="form-control" name="distance"  placeholder = <%= shemaDetail.distance %> >
+       <input type="text" class="form-control" name="distance"  placeholder = <%= shemadata.distance %> >
      </div>
      <div class="form-group">
        <label>ราคา (บาท) :</label>
-       <input type="text" class="form-control" name="cost"  placeholder = <%= shemaDetail.cost %> >
+       <input type="text" class="form-control" name="cost"  placeholder = <%= shemadata.cost %> >
      </div>
      <div class="form-group">
        <label >ตำแหน่ง GPS :</label>
-       <input type="text" class="form-control" name="GPS" placeholder="Enter password" width="250px">
+       <input type="text" class="form-control" name="GPS"  width="250px" placeholder=<%= shemadata.gps %>>
      </div>
      <label>ช่วงเวลาทำการ</label>
      <br></br>
@@ -47,18 +47,18 @@
          <label>ตั้งแต่ :</label>
           <select class="selectpicker" name="start">
             <% include ../component/option.ejs%>
-          </select>
+          </select><b> น.</b>
           <label>จนถึง :</label>
            <select class="selectpicker" name="end">
              <% include ../component/option.ejs%>
-           </select>
-           <label>รอบการออกรถ :</label>
+           </select><b> น.</b>
+           <label>รอบการออกรถ :</label><b> ทุก</b>
             <select class="selectpicker"  name="round">
               <option></option>
-              <option>ทุก 15 นาที</option>
-              <option>ทุก 30 นาที</option>
-              <option>ทุก 1 ชั่วโมง</option>
-            </select>
+              <option>15</option>
+              <option>30</option>
+              <option>60</option>
+            </select><b> นาที</b>
       </div>
       <div class="form-group">
 
@@ -90,7 +90,9 @@
           modal.style.display = "none";
       }
   }
-
+  function changeaction() {
+  document.getElementById('data').action = window.location.pathname+"/save"
+}
 </script>
 </body>
 </html>
