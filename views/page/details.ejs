@@ -18,11 +18,7 @@
           <div class="modal-content">
             <span class="close">&times;</span>
             <label>URL image :</label>
-<<<<<<< HEAD
             <input  class = "form-control" name="image" id = "image" value = <%= shemadata.urlimg %>>
-=======
-            <input  class = "form-control" name="image" id = "image" value=<%= shemadata.urlimg %>>
->>>>>>> 76343445020788713eafd0f6536697363a703b19
             <button type="button" class="center-block btn" id="save">Save</button>
           </div>
         </div>
@@ -31,11 +27,7 @@
     <input type="hidden" name="user" value=<%= shemaUser.company%>>
      <div class="form-group">
        <label>เส้นทาง :</label>
-<<<<<<< HEAD
        <input type="text" class="form-control" id="route"name="route" value=<%= shemadata.route %>  >
-=======
-       <input type="text" class="form-control" name="route"  value = <%= shemadata.route %> >
->>>>>>> 76343445020788713eafd0f6536697363a703b19
      </div>
      <div class="form-group">
        <label>ระยะทาง :</label>
@@ -43,11 +35,7 @@
      </div>
      <div class="form-group">
        <label>ราคา (บาท) :</label>
-<<<<<<< HEAD
        <input type="text" class="form-control" name="cost" value = <%= shemadata.cost %> >
-=======
-       <input type="text" class="form-control" name="cost"  value = <%= shemadata.cost %> >
->>>>>>> 76343445020788713eafd0f6536697363a703b19
      </div>
      <div class="form-group">
        <label >ตำแหน่ง GPS :</label>
@@ -103,7 +91,6 @@
           modal.style.display = "none";
       }
   }
-
   function changeaction() {
     document.getElementById('data').action = window.location.pathname+"/save"
   }
