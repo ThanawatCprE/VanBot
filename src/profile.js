@@ -82,6 +82,7 @@ function gettime(starts,ends,rounds,user,route){
     // console.log(start,typeof(start));
 
   }
+  timezone.push(end.toFixed(2));
   var temp ="";
   for(var i=0;i<timezone.length;i++){
     if(i == timezone.length-1){
