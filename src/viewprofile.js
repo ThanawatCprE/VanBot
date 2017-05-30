@@ -104,5 +104,6 @@ module.exports = function(app,express,session,auth,client){
     res.redirect('/viewprofile');
    // res.render('page/details',{shemaUser,shemadata});
   })
+
   app.use('/viewprofile',router)
 }
