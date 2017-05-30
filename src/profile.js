@@ -18,7 +18,7 @@ function genshema(i){
       "gps" : "`+cdetail[i].clocation+`"
     }`
     var shema = JSON.parse(shemaDetail);
-    console.log(shema);
+    // console.log(shema);
     pushdata(shema);
   // },200)
 }
@@ -40,17 +40,17 @@ function b(client,i,res){
         time.push('"'+rounds[0].time+'"');
         time.push('"'+rounds[rounds.length-1].time+'"');
         var timeround = rounds[1].time-rounds[0].time
-        console.log("sub",timeround.toFixed(2));
+        // console.log("sub",timeround.toFixed(2));
         if(timeround == 1){
           timeround = 60;
         }else{
-
+          timeround = 30;
         }
-        time.push('"'+timeround.toFixed(2)+'"');
+        time.push('"'+timeround+'"');
      }
     genshema(i)
     if(i==cdetail.length-1){
-      console.log(total);
+      // console.log(total);
       res.render('page/profile',{shemaUser,total});
     }
   });
@@ -64,8 +64,11 @@ function a(client,i){
 
 function gettime(starts,ends,rounds,user,route){
   var start = parseFloat(starts)
+  console.log(start);
   var end = parseFloat(ends)
+  console.log(end);
   var round = parseFloat("0."+rounds)
+console.log(round);
   var track=0;
   var timezone=[]
   while(start<end){
@@ -79,8 +82,6 @@ function gettime(starts,ends,rounds,user,route){
     else{
       start += track
     }
-    // console.log(start,typeof(start));
-
   }
   timezone.push(end.toFixed(2));
   var temp ="";
@@ -90,6 +91,7 @@ function gettime(starts,ends,rounds,user,route){
     }else{
       temp += "('"+user+"','"+route+"','"+timezone[i]+"'),"
     }
+    console.log(temp);
   }
   return temp;
 }
@@ -130,13 +132,14 @@ module.exports = function(app,express,session,auth,client){
       });
   })
   router.get('/edit',function(req,res){
-    console.log(req.query.key);
+    // console.log(req.query.key);
     var shemadata=total[req.query.key];
     res.render('page/details',{shemaUser,shemadata});
   })
+
   router.get('/edit/save',function(req,res){
     var time = gettime(req.query.start,req.query.end,req.query.round,req.query.user,req.query.route);
-    console.log(time);
+    console.log(req.query);
     client.query("DELETE FROM round_company WHERE rcompany ='"+req.query.route+"' and cname ='"+req.query.user+"';",function(err,company){
       if(err) {
         console.log("delete round_company err");
@@ -148,23 +151,18 @@ module.exports = function(app,express,session,auth,client){
           console.log("Add round_company .....................")
     })
      var temp = "update cdetail set cost ="+req.query.cost+" , cimage ="+"'"+req.query.image+"'"+",clocation ='"+req.query.GPS+"' where rcompany ='"+req.query.route+"';"
-
-     client.query("insert into round_company values"+time+";",function(errs,user){
-           if(errs) throw errs;
-           console.log("Add round_company .....................")
-     })
      client.query(temp,function(err,company){
          if(err) throw err;
        });
     temp = "update route set distance ="+req.query.distance+" where routing ='"+req.query.route+"';"
-            console.log(temp);
+            // console.log(temp);
     client.query(temp,function(err,company){
          if(err) throw err;
     });
     res.redirect('/profile');
   })
   router.get('/delete',function(req,res){
-    console.log(req.query.key);
+    // console.log(req.query.key);
     var shemadata=total[req.query.key];
         client.query("DELETE FROM cdetail WHERE rcompany ='"+shemadata.route+"';",function(err,company){
         if(err){

@@ -12,7 +12,7 @@ module.exports = function(app,express,session,auth,client,shemaUser,gettime){
   })
   router.get("/save",function(req,res){
     var time = gettime(req.query.start,req.query.end,req.query.round,req.query.user,req.query.route);
-    console.log(req.query);
+    console.log(time);
      client.query("select * from route where routing='"+req.query.route+"';",function(err,route){
         if(route.rows == ""){
            client.query("insert into route values('"+req.query.route+"',"+req.query.distance+");",function(errs,user){
