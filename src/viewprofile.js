@@ -65,14 +65,9 @@ module.exports = function(app,express,session,auth,client){
           }//
           });
         shemaUser.company = "admin";
-       
+
       });
       //res.render('page/viewprofile',{shemaUser,total});
-  })
-  router.get('/edit',function(req,res){
-    console.log(req.query.key);
-    var shemadata=total[req.query.key];
-    res.render('page/details',{shemaUser,shemadata});
   })
    router.get('/delete',function(req,res){
     console.log(req.query.key);
@@ -101,29 +96,13 @@ module.exports = function(app,express,session,auth,client){
         if(err){
           console.log("delete vanuser  err");
           console.log(err);
-          
+
         }
         });
-       
-       
-    res.redirect('/viewprofile');    
+
+
+    res.redirect('/viewprofile');
    // res.render('page/details',{shemaUser,shemadata});
   })
-  router.get('/edit/save',function(req,res){
-    console.log(req.query);
-    var temp = "update cdetail set cost ="+req.query.cost+" , cimage ="+"'"+req.query.image+"'"+",clocation ='"+req.query.GPS+"' where rcompany ='"+req.query.route+"';"
-   
-    client.query(temp,function(err,company){
-        if(err) throw err;
-      });
-      temp = "update route set distance ="+req.query.distance+" where routing ='"+req.query.route+"';"
-           console.log(temp);
-
-       client.query(temp,function(err,company){
-        if(err) throw err;
-      });
-   res.redirect('/viewprofile');
-  })
-  require('./add')(app,express,session,auth,client,shemaUser);
   app.use('/viewprofile',router)
 }
