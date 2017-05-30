@@ -61,7 +61,13 @@ var user='';
        user=req.query.email;
        req.session.email = req.query.email;
        req.session.admin = true;
-       res.redirect('/profile');
+       if(user == "admin@admin.com"){
+        console.log("login be admin");
+          res.redirect('/viewprofile');
+       }else{
+        console.log("login be user");
+        res.redirect('/profile');
+      }
      }
    })
   //  console.log(req.query.email);
@@ -77,6 +83,8 @@ var user='';
 //
 require('./src/register')(app,express,client);
 require('./src/profile')(app,express,session,auth,client);
+require('./src/viewprofile')(app,express,session,auth,client);
+
 // app.use('/profile', auth,profile);
 
  app.get('/logout', function (req, res) {

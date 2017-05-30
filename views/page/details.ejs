@@ -18,7 +18,7 @@
           <div class="modal-content">
             <span class="close">&times;</span>
             <label>URL image :</label>
-            <input  class = "form-control" name="image" id = "image" placeholder = "Enter URL image">
+            <input  class = "form-control" name="image" id = "image" value = <%= shemadata.urlimg %>>
             <button type="button" class="center-block btn" id="save">Save</button>
           </div>
         </div>
@@ -27,35 +27,36 @@
     <input type="hidden" name="user" value=<%= shemaUser.company%>>
      <div class="form-group">
        <label>เส้นทาง :</label>
-       <input type="text" class="form-control" name="route"  placeholder = <%= shemadata.route %> >
+       <input type="text" class="form-control" id="route"name="route" value=<%= shemadata.route %>  >
      </div>
      <div class="form-group">
        <label>ระยะทาง :</label>
-       <input type="text" class="form-control" name="distance"  placeholder = <%= shemadata.distance %> >
+       <input type="text" class="form-control" name="distance"  value = <%= shemadata.distance %> >
      </div>
      <div class="form-group">
        <label>ราคา (บาท) :</label>
-       <input type="text" class="form-control" name="cost"  placeholder = <%= shemadata.cost %> >
+       <input type="text" class="form-control" name="cost" value = <%= shemadata.cost %> >
      </div>
      <div class="form-group">
        <label >ตำแหน่ง GPS :</label>
-       <input type="text" class="form-control" name="GPS"  width="250px" placeholder=<%= shemadata.gps %>>
+       <input type="text" class="form-control" name="GPS"  width="250px" value=<%= shemadata.gps %>>
      </div>
      <label>ช่วงเวลาทำการ</label>
      <br></br>
       <div class="form-group">
          <label>ตั้งแต่ :</label>
           <select class="selectpicker" name="start">
+            <option><%= shemadata["time"][0] %></option>
             <% include ../component/option.ejs%>
           </select><b> น.</b>
           <label>จนถึง :</label>
            <select class="selectpicker" name="end">
+             <option><%= shemadata["time"][1] %></option>
              <% include ../component/option.ejs%>
            </select><b> น.</b>
            <label>รอบการออกรถ :</label><b> ทุก</b>
             <select class="selectpicker"  name="round">
-              <option></option>
-              <option>15</option>
+              <option><%= shemadata["time"][2] %></option>
               <option>30</option>
               <option>60</option>
             </select><b> นาที</b>
@@ -91,8 +92,17 @@
       }
   }
   function changeaction() {
-  document.getElementById('data').action = window.location.pathname+"/save"
-}
+    document.getElementById('data').action = window.location.pathname+"/save"
+  }
+  permiss();
+  function permiss(){
+    if(window.location.pathname=="/profile/edit"){
+      document.getElementById('route').readOnly = true;
+    }
+    else{
+        document.getElementById('route').readOnly = false;
+    }
+  }
 </script>
 </body>
 </html>

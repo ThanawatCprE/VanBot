@@ -12,6 +12,7 @@
 		<!-- <h4>So I've worked on a new project and came up with this UI. Here you can use it. :) Follow me on twitter: <a href="https://twitter.com/AlexMahrt/">@AlexMahrt</a></h4> -->
 	</div>
   <div class="row row-margin-bottom">
+
     <% for(var i=0; i<total.length; i++) {%>
 
 
@@ -23,27 +24,21 @@
                         </div>
                         <div class="col-md-6">
                             <div class="lib-row lib-header">
-                                <%= total[i].route %>
+                               บริษัท : <%= total[i].name %>
                             <div class="lib-header-seperator"></div>
                             </div>
                             <div class="lib-row lib-desc">
-                                ระยะทาง : <%= total[i].distance %> กม.
-                                <br>
-                                เวลา : <%= total[i]["time"][0] %> - <%= total[i]["time"][1] %> น.
-                                <br>
-                                รถออกทุก : <%= total[i]["time"][2] %> นาที
-                                <br>
-                                ราคา : <%= total[i].cost %> บาท
+                                E-mail : <%= total[i].id %>
                                 <br>
                                 เบอร์โทรศัพท์ : <%= total[i].phone %>
                                 <br>
                                 <br>
-                                <button type="button" class="btn btn-primary btn-xs" onclick=window.location.href='<%= total[i].gps%>' >GPS</button>
+                               
                             </div>
 
                             <div class="lib-row lib-header">
-                              <button type="button" class="btn btn-success" onclick=window.location.href='/profile/edit?key=<%=i%>'>Edit</button>
-                              <button type="button" class="btn btn-danger" onclick=ConfirmDelete(<%=i%>);>Delete</button>
+                             <!-- <button type="button" class="btn btn-success" onclick=window.location.href='/viewprofile/edit?key=<%=i%>'>Edit</button> -->
+                              <button type="button" class="btn btn-danger" onclick="ConfirmDelete(<%=i%>)" >Delete</button>
                             </div>
                         </div>
                     </div>
@@ -55,27 +50,12 @@
             <% } %>
 
         <% } %>
-            <div class="col-md-5 no-padding lib-item" data-category="view">
-                <div class="lib-panel">
-                    <div class="row box-shadow">
-                        <div class="col-md-6">
-                            <img class="lib-img-show" src="http://www.clipartbest.com/cliparts/4T9/zBp/4T9zBpp8c.png" style="width:25rem;height:25rem;">
-                        </div>
-                        <div class="lib-row lib-desc ">
-                          <br></br><br></br><br>
-                          <button type="button" class="btn btn-success btn-lg center-block " onclick="window.location.href='/profile/add'">Add</button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
+         
 </div>
-<script>
-function ConfirmDelete(i){
+<script type="text/javascript">
+    function ConfirmDelete(i){
     if (confirm("Delete route?")){
-        window.location.href='/profile/delete?key='+i
+        window.location.href='/viewprofile/delete?key='+i
         return true;
     }
     else {
@@ -85,4 +65,5 @@ function ConfirmDelete(i){
 }
 </script>
 </body>
+
 </html>
