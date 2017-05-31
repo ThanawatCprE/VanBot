@@ -9,7 +9,7 @@
   <% include ../component/nav-top.ejs %>
 
 <div class="container">
-   <form onSubmit="return changeaction();" method="get" id="data">
+   <form onSubmit="return test();" method="get" id="data">
      <!-- <div id="img_container "> -->
      <div class="form-group">
        <image  id="demo" class="img-rounded center-block" name="picture" width="250" height="250" src= <%= shemadata.urlimg %>>
@@ -31,15 +31,15 @@
      </div>
      <div class="form-group">
        <label>ระยะทาง :</label>
-       <input type="text" class="form-control" name="distance"  value = <%= shemadata.distance %> >
+       <input type="text" class="form-control" id="distance" name="distance"  value = <%= shemadata.distance %> >
      </div>
      <div class="form-group">
        <label>ราคา (บาท) :</label>
-       <input type="text" class="form-control" name="cost" value = <%= shemadata.cost %> >
+       <input type="text" class="form-control" id="cost" name="cost" value = <%= shemadata.cost %> >
      </div>
      <div class="form-group">
        <label >ตำแหน่ง GPS :</label>
-       <input type="text" class="form-control" name="GPS"  width="250px" value=<%= shemadata.gps %>>
+       <input type="text" class="form-control" id="GPS" name="GPS"  width="250px" value=<%= shemadata.gps %>>
      </div>
      <label>ช่วงเวลาทำการ</label>
      <br></br>
@@ -64,7 +64,7 @@
       <div class="form-group">
 
       </div>
-     <button type="submit" class="btn btn-primary btn-lg">Save</button>
+     <button type="submit" class="btn btn-primary btn-lg" onclick="myFunction();">Save</button>
      <button type="button" class="btn btn-danger btn-lg" onclick="window.location.href='/profile'">Cancle</button>
    </form>
 </div>
@@ -101,6 +101,16 @@
     }
     else{
         document.getElementById('route').readOnly = false;
+    }
+  }
+  function test(){
+    if (document.getElementById('route').value == "" || document.getElementById('distance').value == "" || document.getElementById('GPS').value == "" || document.getElementById('cost').value == ""){
+    alert("Please insert data")
+    return false;
+    }
+    else{
+      return changeaction();
+
     }
   }
 </script>

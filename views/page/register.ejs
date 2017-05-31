@@ -7,7 +7,7 @@
 <body>
 
 <div class="container">
-   <form action="/register/save" method="get">
+   <form onSubmit="return test();" id ="data" method="get">
      <!-- <div id="img_container "> -->
      <div class="form-group">
        <image  id="demo" class="img-rounded center-block" name="picture" width="250" height="250" src="http://foryouindia.com/Default/Pages/Images/Profile.png">
@@ -24,7 +24,7 @@
     <!-- </div> -->
      <div class="form-group">
        <label>E-mail :</label>
-       <input type = "email" class="form-control" name="email" id="company" placeholder = "Enter Username" >
+       <input type = "email" class="form-control" name="email" id="email" placeholder = "Enter Username" >
      </div>
      <div class="form-group">
        <label for="pwd">Password :</label>
@@ -32,7 +32,7 @@
      </div>
      <div class="form-group">
        <label for="pwd">Re-Password</label>
-       <input type="password" class="form-control"  id="pwd" placeholder = "Enter Re-Password">
+       <input type="password" class="form-control"  id="repwd" placeholder = "Enter Re-Password">
      </div>
      <div class="form-group">
        <label for="CompanyName">ชื่อบริษัท :</label>
@@ -40,7 +40,7 @@
      </div>
      <div class="form-group">
        <label for="pwd">เบอร์โทรศัพท์ :</label>
-       <input type="form-control" class="form-control" name="phone" id="pwd" placeholder = "Enter your Phone Number">
+       <input type="form-control" class="form-control" name="phone" id="phone" placeholder = "Enter your Phone Number">
      </div>
      <button type="submit" class="btn btn-primary btn-lg">Register</button>
      <button type="button" class="btn btn-danger btn-lg" onclick="window.location.href='/'">Cancle</button>
@@ -68,7 +68,18 @@
           modal.style.display = "none";
       }
   }
-
+  function changeaction() {
+    document.getElementById('data').action = "/register/save"
+  }
+  function test(){
+  if (document.getElementById('email').value == "" || document.getElementById('pwd').value != document.getElementById('repwd').value || document.getElementById('company').value == "" || document.getElementById('phone').value == ""){
+    alert("Please insert data")
+    return false;
+  }
+  else{
+    return changeaction();
+  }
+}
 </script>
 </body>
 </html>
